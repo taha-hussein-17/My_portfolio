@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ExternalLink, Github, Star } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { ProjectItem } from "@/types";
 
 export default function ProjectsPage() {
   const { t } = useLanguage();
@@ -23,7 +24,7 @@ export default function ProjectsPage() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {t.projects.items.map((project, index) => (
+          {t.projects.items.map((project: ProjectItem, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}

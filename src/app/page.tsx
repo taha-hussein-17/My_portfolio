@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Code, Palette, Rocket, Star, CheckCircle2, Quote, ChevronDown, Plus, Minus, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { TranslationContent, StatItem, SkillItem, SkillGridItem, ProjectItem, ExperienceItem, TestimonialItem, FAQItem, ServiceItem } from "@/types";
 import { useState } from "react";
 
 export default function Home() {
@@ -65,7 +66,7 @@ export default function Home() {
       <section className="py-12 border-y border-border bg-card/50">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {t.stats.items.map((stat: any, i: number) => (
+            {t.stats.items.map((stat: StatItem, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -93,12 +94,13 @@ export default function Home() {
               className="relative aspect-square max-w-md mx-auto md:mx-0"
             >
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl" />
-              <div className="relative z-10 w-full h-full bg-card rounded-[2.5rem] overflow-hidden border-8 border-background shadow-2xl">
+              <div className="relative z-10 w-full h-full bg-card rounded-[2.5rem] overflow-hidden border-8 border-background shadow-2xl min-h-[400px]">
                 <Image 
                   src="/me.png" 
                   alt="Taha Hussein" 
                   fill
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-100"
+                  priority
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-100"
                 />
               </div>
             </motion.div>
@@ -116,7 +118,7 @@ export default function Home() {
                 {t.about.desc}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-                {t.about.skills.slice(0, 2).map((skill: any, i: number) => (
+                {t.about.skills.slice(0, 2).map((skill: SkillItem, i: number) => (
                   <div key={i} className="flex gap-3 items-center">
                     <div className="w-2 h-2 rounded-full bg-primary" />
                     <span className="font-bold">{skill.title}</span>
@@ -144,7 +146,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {t.services.items.map((service, index) => (
+            {t.services.items.map((service: ServiceItem, index: number) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -177,8 +179,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            {t.about.skills_grid.map((skill: any, i: number) => (
+            {t.about.skills_grid.map((skill: SkillGridItem, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -220,7 +221,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {t.projects.items.slice(0, 2).map((project, i) => (
+            {t.projects.items.slice(0, 2).map((project: ProjectItem, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -272,7 +273,7 @@ export default function Home() {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            {t.experience.items.map((exp, i) => (
+            {t.experience.items.map((exp: ExperienceItem, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
@@ -315,7 +316,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {t.testimonials.items.map((item, i) => (
+            {t.testimonials.items.map((item: TestimonialItem, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -350,7 +351,7 @@ export default function Home() {
           </div>
 
           <div className="space-y-4">
-            {t.faq.items.map((item, i) => (
+            {t.faq.items.map((item: FAQItem, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 10 }}

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { User, Code2, GraduationCap, Award, CheckCircle2, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { SkillItem, ExperienceItem, EducationItem } from "@/types";
 
 export default function AboutPage() {
   const { t, lang } = useLanguage();
@@ -17,14 +18,15 @@ export default function AboutPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative w-full aspect-square max-w-md mx-auto">
+            <div className="relative w-full aspect-square max-w-md mx-auto min-h-[400px]">
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl" />
               <div className="relative z-10 w-full h-full bg-card rounded-3xl overflow-hidden border-4 border-white dark:border-border shadow-2xl">
                  <Image 
                    src="/me.png" 
                    alt="Taha Hussein" 
                    fill
-                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                   priority
+                   className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
                  />
               </div>
             </div>
@@ -59,7 +61,7 @@ export default function AboutPage() {
             </div>
             
             <div className="space-y-6">
-              {t.about.skills.map((item, i) => (
+              {t.about.skills.map((item: SkillItem, i: number) => (
                 <div key={i} className={`flex gap-4 items-start ${lang === "ar" ? "text-right" : "text-left"}`}>
                   <div className="p-3 bg-card rounded-2xl shadow-sm border border-border">
                     {i === 0 && <Code2 className="text-primary" />}
@@ -84,7 +86,7 @@ export default function AboutPage() {
           </div>
 
           <div className="space-y-12">
-            {t.experience.items.map((exp, i) => (
+            {t.experience.items.map((exp: ExperienceItem, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -126,7 +128,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {t.education.items.map((edu: any, i: number) => (
+            {t.education.items.map((edu: EducationItem, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}

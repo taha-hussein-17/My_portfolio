@@ -2,13 +2,14 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { translations } from "./translations";
+import { TranslationContent } from "@/types";
 
 type Language = "ar" | "en";
 
 interface LanguageContextType {
   lang: Language;
   setLang: (lang: Language) => void;
-  t: typeof translations.ar;
+  t: TranslationContent;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
