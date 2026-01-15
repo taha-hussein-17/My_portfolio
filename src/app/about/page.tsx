@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { User, Code2, GraduationCap, Award, CheckCircle2, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -19,10 +20,11 @@ export default function AboutPage() {
             <div className="relative w-full aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl" />
               <div className="relative z-10 w-full h-full bg-card rounded-3xl overflow-hidden border-4 border-white dark:border-border shadow-2xl">
-                 <img 
-                   src="/me.jpeg" 
+                 <Image 
+                   src="/me.png" 
                    alt="Taha Hussein" 
-                   className="w-full h-full  object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                   fill
+                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                  />
               </div>
             </div>

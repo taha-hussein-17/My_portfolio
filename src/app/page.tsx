@@ -94,9 +94,10 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl" />
               <div className="relative z-10 w-full h-full bg-card rounded-[2.5rem] overflow-hidden border-8 border-background shadow-2xl">
-                <img 
-                  src="/me.jpeg" 
+                <Image 
+                  src="/me.png" 
                   alt="Taha Hussein" 
+                  fill
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-100"
                 />
               </div>
@@ -176,6 +177,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             {t.about.skills_grid.map((skill: any, i: number) => (
               <motion.div
                 key={i}
@@ -227,9 +229,10 @@ export default function Home() {
                 className="relative group overflow-hidden rounded-3xl aspect-video bg-card border border-border shadow-sm hover:shadow-xl transition-all"
               >
                 <div className="absolute inset-0 z-0">
-                  <img 
+                  <Image 
                     src={project.image} 
                     alt={project.title} 
+                    fill
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />

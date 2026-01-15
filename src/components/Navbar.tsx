@@ -30,6 +30,7 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -57,7 +58,7 @@ export default function Navbar() {
               className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary shadow-lg"
             >
               <Image 
-                src="/me.jpeg" 
+                src="/me.png" 
                 alt="Logo" 
                 fill 
                 className="object-cover"

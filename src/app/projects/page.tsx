@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ExternalLink, Github, Star } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -32,9 +33,10 @@ export default function ProjectsPage() {
               className="bg-card rounded-3xl overflow-hidden border border-border shadow-lg group hover:shadow-2xl transition-all"
             >
               <div className="aspect-video relative overflow-hidden border-b border-border">
-                <img 
+                <Image 
                   src={project.image} 
                   alt={project.title} 
+                  fill
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />

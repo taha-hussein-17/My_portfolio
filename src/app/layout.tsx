@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   keywords: ["مطور ويب", "برمجة", "Next.js", "React", "بورتفوليو", "تصميم واجهات"],
   authors: [{ name: "طه" }],
   icons: {
-    icon: "/me.jpeg",
-    apple: "/me.jpeg",
+    icon: "/me.png",
+    apple: "/me.png",
   },
   openGraph: {
     title: "طه بورتفوليو | مطور واجهات أمامية محترف",
