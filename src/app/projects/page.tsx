@@ -7,7 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { ProjectItem } from "@/types";
 
 export default function ProjectsPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <div className="py-20 min-h-screen">
@@ -54,9 +54,23 @@ export default function ProjectsPage() {
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-secondary mb-6 text-sm leading-relaxed">
+                <p className="text-secondary mb-4 text-sm leading-relaxed">
                   {project.desc}
                 </p>
+                <div className="space-y-3 mb-6 bg-secondary/5 p-4 rounded-2xl">
+                  <p className="text-xs text-secondary leading-relaxed">
+                    <span className="font-bold text-primary block mb-1">{lang === 'ar' ? 'المشكلة:' : 'The Problem:'}</span>
+                    {project.problem}
+                  </p>
+                  <p className="text-xs text-secondary leading-relaxed">
+                    <span className="font-bold text-primary block mb-1">{lang === 'ar' ? 'الحل:' : 'The Solution:'}</span>
+                    {project.solution}
+                  </p>
+                  <p className="text-xs text-secondary leading-relaxed">
+                    <span className="font-bold text-primary block mb-1">{lang === 'ar' ? 'النتيجة:' : 'The Result:'}</span>
+                    {project.result}
+                  </p>
+                </div>
                 <div className="flex gap-4">
                   <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold hover:text-primary transition-colors">
                     <ExternalLink className="w-4 h-4" />

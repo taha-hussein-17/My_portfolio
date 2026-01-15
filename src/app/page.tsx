@@ -26,14 +26,26 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              {lang === "ar" ? (
-                <>أصنع <span className="gradient-text">مستقبل الويب</span> <br /> بلمسة فنية إبداعية</>
-              ) : (
-                <>Crafting the <span className="gradient-text">Future of Web</span> <br /> with Creative Touch</>
-              )}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20"
+            >
+              <span className="text-sm font-bold text-primary uppercase tracking-widest">
+                {t.hero.role}
+              </span>
+            </motion.div>
+
+            <h1 className="text-4xl md:text-7xl font-bold mb-4 leading-tight">
+              {lang === 'ar' ? 'أنا ' : "I'm "}<span className="gradient-text">{t.hero.name}</span>
             </h1>
-            <p className="text-xl md:text-2xl text-secondary mb-10 max-w-2xl mx-auto">
+            
+            <h2 className="text-2xl md:text-4xl font-bold mb-8 text-foreground/80">
+              {t.hero.title}
+            </h2>
+
+            <p className="text-lg md:text-xl text-secondary mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
               {t.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -47,6 +59,13 @@ export default function Home() {
                 ) : (
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 )}
+              </Link>
+              <Link
+                href="/contact"
+                className="bg-accent text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-accent/90 transition-all flex items-center justify-center gap-2 group shadow-xl w-full sm:w-auto"
+              >
+                {t.hero.cta_secondary}
+                <Rocket className="w-5 h-5 group-hover:animate-bounce" />
               </Link>
               <a
                 href={t.hero.cv_link}
@@ -238,22 +257,28 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 p-8 flex flex-col justify-end">
-                  <div className="flex gap-2 mb-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 p-6 flex flex-col justify-end">
+                  <div className="flex gap-2 mb-3">
                     {project.tags.slice(0, 2).map(tag => (
-                      <span key={tag} className="text-[10px] font-bold px-2 py-0.5 bg-primary text-white rounded-full uppercase tracking-wider">
+                      <span key={tag} className="text-[10px] font-bold px-2 py-0.5 bg-primary text-white rounded-full uppercase">
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{project.title}</h3>
-                  <p className="text-foreground/80 mb-6 line-clamp-2">{project.desc}</p>
-                  <div className="flex gap-4">
-                    <Link href={`/projects`} className="bg-primary text-white px-6 py-2 rounded-full font-bold hover:bg-primary/90 transition-colors text-sm">
+                  <h3 className="text-xl font-bold text-foreground mb-2">{project.title}</h3>
+                  
+                  <div className="space-y-2 mb-4">
+                    <p className="text-[10px] text-foreground/90 leading-tight"><span className="font-bold text-primary">{lang === 'ar' ? 'المشكلة: ' : 'Problem: '}</span>{project.problem}</p>
+                    <p className="text-[10px] text-foreground/90 leading-tight"><span className="font-bold text-primary">{lang === 'ar' ? 'الحل: ' : 'Solution: '}</span>{project.solution}</p>
+                    <p className="text-[10px] text-foreground/90 leading-tight"><span className="font-bold text-primary">{lang === 'ar' ? 'النتيجة: ' : 'Result: '}</span>{project.result}</p>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <Link href={`/projects`} className="bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-primary/90 transition-colors text-xs">
                       {t.projects.details}
                     </Link>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground px-4 py-2 rounded-full font-bold hover:bg-white/20 transition-colors text-sm flex items-center gap-2">
-                      <Code className="w-4 h-4" />
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground px-4 py-2 rounded-full font-bold hover:bg-white/20 transition-colors text-xs flex items-center gap-2">
+                      <Code className="w-3 h-3" />
                       GitHub
                     </a>
                   </div>

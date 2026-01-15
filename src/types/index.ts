@@ -7,6 +7,8 @@ export interface NavLink {
 }
 
 export interface Hero {
+  name: string;
+  role: string;
   title: string;
   subtitle: string;
   cta_primary: string;
@@ -23,6 +25,9 @@ export interface ServiceItem {
 export interface ProjectItem {
   title: string;
   desc: string;
+  problem: string;
+  solution: string;
+  result: string;
   tags: string[];
   link: string;
   demo: string;
