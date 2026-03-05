@@ -3,14 +3,50 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Code, Palette, Rocket, Star, CheckCircle2, Quote, ChevronDown, Plus, Minus, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Code, Palette, Rocket, CheckCircle2, Quote, Plus, Minus, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { TranslationContent, StatItem, SkillItem, SkillGridItem, ProjectItem, ExperienceItem, TestimonialItem, FAQItem, ServiceItem } from "@/types";
-import { useState } from "react";
+import { StatItem, SkillItem, SkillGridItem, ProjectItem, ExperienceItem, TestimonialItem, FAQItem, ServiceItem } from "@/types";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const { t, lang } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [displayedRole, setDisplayedRole] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const fullRole = t.hero.role;
+
+  useEffect(() => {
+    if (!fullRole) return;
+
+    const isAtEnd = charIndex === fullRole.length;
+    const isAtStart = charIndex === 0;
+
+    const typingSpeed = isDeleting ? 60 : 120;
+    const pauseDuration = 1600;
+
+    const timeoutDuration =
+      !isDeleting && isAtEnd ? pauseDuration : typingSpeed;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && charIndex < fullRole.length) {
+        const nextIndex = charIndex + 1;
+        setDisplayedRole(fullRole.slice(0, nextIndex));
+        setCharIndex(nextIndex);
+      } else if (!isDeleting && isAtEnd) {
+        setIsDeleting(true);
+      } else if (isDeleting && charIndex > 0) {
+        const nextIndex = charIndex - 1;
+        setDisplayedRole(fullRole.slice(0, nextIndex));
+        setCharIndex(nextIndex);
+      } else if (isDeleting && isAtStart) {
+        setIsDeleting(false);
+      }
+    }, timeoutDuration);
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, fullRole, isDeleting]);
 
   return (
     <div className="overflow-hidden">
@@ -32,8 +68,9 @@ export default function Home() {
               transition={{ delay: 0.2 }}
               className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20"
             >
-              <span className="text-sm font-bold text-primary uppercase tracking-widest">
-                {t.hero.role}
+              <span className="text-sm font-bold text-primary uppercase tracking-widest flex items-center gap-1">
+                <span>{displayedRole || fullRole}</span>
+                <span className="inline-block w-[2px] h-4 md:h-5 bg-primary animate-pulse" />
               </span>
             </motion.div>
 
@@ -65,7 +102,11 @@ export default function Home() {
                 className="bg-accent text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-accent/90 transition-all flex items-center justify-center gap-2 group shadow-xl w-full sm:w-auto"
               >
                 {t.hero.cta_secondary}
-                <Rocket className="w-5 h-5 group-hover:animate-bounce" />
+                {lang === "ar" ? (
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                ) : (
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                )}
               </Link>
               <a
                 href={t.hero.cv_link}
@@ -351,7 +392,7 @@ export default function Home() {
                 className="bg-background p-8 rounded-3xl border border-border shadow-sm relative group"
               >
                 <Quote className="w-10 h-10 text-primary/10 absolute top-6 right-6 group-hover:text-primary/20 transition-colors" />
-                <p className="text-secondary italic mb-8 relative z-10">"{item.content}"</p>
+                <p className="text-secondary italic mb-8 relative z-10">&quot;{item.content}&ldquo;</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center font-bold text-primary">
                     {item.name[0]}

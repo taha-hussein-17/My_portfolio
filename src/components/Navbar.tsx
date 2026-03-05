@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X, Home, User, Briefcase, Mail, Sun, Moon, Languages } from "lucide-react";
+import { Menu, X, Home, User, Briefcase, Mail, Sun, Moon, Languages, Code, Newspaper } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/context/LanguageContext";
@@ -25,6 +25,8 @@ export default function Navbar() {
   const navLinks = [
     { name: t.nav.home, href: "/", icon: <Home className="w-4 h-4" /> },
     { name: t.nav.projects, href: "/projects", icon: <Briefcase className="w-4 h-4" /> },
+    { name: t.nav.services, href: "/services", icon: <Code className="w-4 h-4" /> },
+    { name: t.nav.blog, href: "/blog", icon: <Newspaper className="w-4 h-4" /> },
     { name: t.nav.about, href: "/about", icon: <User className="w-4 h-4" /> },
     { name: t.nav.contact, href: "/contact", icon: <Mail className="w-4 h-4" /> },
   ];

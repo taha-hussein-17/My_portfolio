@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { User, Code2, GraduationCap, Award, CheckCircle2, Download } from "lucide-react";
+import { Code2, GraduationCap, Award, CheckCircle2, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SkillItem, ExperienceItem, EducationItem } from "@/types";
 

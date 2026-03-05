@@ -1,4 +1,8 @@
 export interface NavLink {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  services: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  blog: any;
   home: string;
   projects: string;
   about: string;
@@ -23,6 +27,7 @@ export interface ServiceItem {
 }
 
 export interface ProjectItem {
+  id: string;
   title: string;
   desc: string;
   problem: string;
@@ -32,6 +37,8 @@ export interface ProjectItem {
   link: string;
   demo: string;
   image: string;
+  full_desc?: string;
+  features?: string[];
 }
 
 export interface SkillItem {
@@ -67,11 +74,24 @@ export interface TestimonialItem {
   name: string;
   role: string;
   content: string;
+  rating?: number;
+  image?: string;
 }
 
 export interface FAQItem {
   q: string;
   a: string;
+  category?: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  content: string;
+  image: string;
+  category: string;
 }
 
 export interface TranslationContent {
@@ -88,6 +108,11 @@ export interface TranslationContent {
     preview: string;
     code: string;
     items: ProjectItem[];
+  };
+  blog: {
+    title: string;
+    view_all: string;
+    items: BlogPost[];
   };
   about: {
     title: string;
