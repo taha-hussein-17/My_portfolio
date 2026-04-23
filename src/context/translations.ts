@@ -19,7 +19,7 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
       cta_primary: "شاهد أعمالي",
       cta_secondary: "أطلب شغلك الان",
       download_cv: "تحميل السيرة الذاتية",
-      cv_link: "https://drive.google.com/file/d/1oPimDWjUYF3fMJMNvlfB-iYKXDZmh-I1/view",
+      cv_link: "https://drive.google.com/file/d/1xY4l3lsZtNV-5l572-FSRZLRUVQQpMKJ/view?usp=sharing",
     },
     services: {
       title: "إزاي أقدر أساعدك؟",
@@ -262,7 +262,7 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
       cta_primary: "View Projects",
       cta_secondary: "Hire Me",
       download_cv: "Download CV",
-      cv_link: "https://drive.google.com/file/d/1oPimDWjUYF3fMJMNvlfB-iYKXDZmh-I1/view",
+      cv_link: "https://drive.google.com/file/d/1xY4l3lsZtNV-5l572-FSRZLRUVQQpMKJ/view?usp=sharing",
     },
     services: {
       title: "How I Can Help",
