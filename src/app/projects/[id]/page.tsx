@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, ExternalLink, Github, CheckCircle2, Layout, Shield, Zap } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github, CheckCircle2, Layout, Shield, Zap, Cpu, Gauge } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -131,6 +131,18 @@ export default function ProjectDetails() {
                   content: project.result,
                   bg: "bg-green-500/5"
                 },
+                ...(project.architecture ? [{
+                  icon: <Cpu className="w-6 h-6 text-blue-500" />, 
+                  title: lang === "ar" ? "الهيكل البرمجي (Architecture)" : "Architecture", 
+                  content: project.architecture,
+                  bg: "bg-blue-500/5"
+                }] : []),
+                ...(project.performance ? [{
+                  icon: <Gauge className="w-6 h-6 text-purple-500" />, 
+                  title: lang === "ar" ? "الأداء (Performance)" : "Performance", 
+                  content: project.performance,
+                  bg: "bg-purple-500/5"
+                }] : []),
               ].map((item, i) => (
                 <div key={i} className={`p-8 rounded-[2rem] border border-border/50 ${item.bg}`}>
                   <div className="flex items-center gap-3 mb-4">
@@ -155,6 +167,27 @@ export default function ProjectDetails() {
                     <div key={i} className="flex items-center gap-3">
                       <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
                       <span className="font-bold text-foreground/80">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Screenshots Grid */}
+            {project.screenshots && project.screenshots.length > 0 && (
+              <div className="space-y-8">
+                <h3 className="text-2xl font-bold">
+                  {lang === "ar" ? "لقطات الشاشة" : "Project Screenshots"}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {project.screenshots.map((shot, i) => (
+                    <div key={i} className="relative aspect-video rounded-3xl overflow-hidden border border-border shadow-md hover:shadow-xl transition-shadow group">
+                      <Image
+                        src={shot}
+                        alt={`${project.title} screenshot ${i + 1}`}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
                   ))}
                 </div>

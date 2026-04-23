@@ -1,6 +1,0 @@
-{
-  "summary": "Implemented a looping typewriter effect for the hero role text using React state and effect in the Home page, and added a professional programmer-style global loader via app/loading.tsx that shows animated terminal-like logs and a code icon while pages are loading.",
-  "current_status": "The portfolio now has an animated hero badge that types and deletes the 'Frontend Developer • Next.js Expert' role in both languages, and a global Next.js loading screen that appears before pages finish loading; all recent changes build successfully with only non-blocking Tailwind lint warnings."
-}
-
-

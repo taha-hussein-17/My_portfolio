@@ -454,39 +454,92 @@ export default function Home() {
 
       {/* Final CTA Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5 -z-10" />
-        <div className="container mx-auto px-6 text-center">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-full -z-10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
+        </div>
+
+        <div className="container mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-primary to-accent p-12 md:p-20 rounded-[3rem] text-white shadow-2xl relative overflow-hidden"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative bg-card border border-border/50 rounded-[3rem] p-12 md:p-24 text-center shadow-2xl overflow-hidden group"
           >
-            {/* Decorative circles */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
+            {/* Animated background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
             
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 relative z-10">
-              {lang === "ar" ? "هل أنت مستعد لبدء مشروعك القادم؟" : "Ready to start your next project?"}
-            </h2>
-            <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto relative z-10">
-              {lang === "ar" 
-                ? "دعنا نحول فكرتك إلى حقيقة رقمية ملموسة. أنا متاح للمشاريع الجديدة والتعاون الإبداعي." 
-                : "Let's turn your idea into a tangible digital reality. I'm available for new projects and creative collaborations."}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
-              <Link
-                href="/contact"
-                className="bg-white text-primary px-10 py-4 rounded-full text-lg font-bold hover:shadow-xl transition-all"
+            <div className="relative z-10 max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-8"
               >
-                {t.nav.cta}
-              </Link>
-              <Link
-                href="/projects"
-                className="bg-transparent border-2 border-white/30 backdrop-blur-md text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-white/10 transition-all"
-              >
-                {t.projects.view_all}
-              </Link>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                {lang === "ar" ? "متاح لمشاريع جديدة" : "Available for new projects"}
+              </motion.div>
+
+              <h2 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
+                {t.cta_section.title}
+              </h2>
+              
+              <p className="text-xl md:text-2xl text-secondary mb-12 leading-relaxed">
+                {t.cta_section.subtitle}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group/btn w-full sm:w-auto"
+                >
+                  <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-40 group-hover/btn:opacity-100 transition duration-500" />
+                  <Link
+                    href="/contact"
+                    className="relative bg-primary text-white px-10 py-5 rounded-full text-xl font-bold flex items-center justify-center gap-3 transition-all hover:bg-primary/90"
+                  >
+                    {t.cta_section.primary}
+                    {lang === "ar" ? <ArrowLeft className="w-6 h-6" /> : <ArrowRight className="w-6 h-6" />}
+                  </Link>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto"
+                >
+                  <Link
+                    href="https://wa.me/201122889897"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-card hover:bg-secondary/10 border-2 border-border text-foreground px-10 py-5 rounded-full text-xl font-bold flex items-center justify-center gap-3 transition-all"
+                  >
+                    <Rocket className="w-6 h-6 text-accent" />
+                    {t.cta_section.secondary}
+                  </Link>
+                </motion.div>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="mt-16 pt-12 border-t border-border/50 grid grid-cols-2 md:grid-cols-4 gap-8">
+                {[
+                  { label: lang === "ar" ? "خبرة" : "Experience", value: "+4 Years" },
+                  { label: lang === "ar" ? "مشروع" : "Projects", value: "+50" },
+                  { label: lang === "ar" ? "رضا العملاء" : "Satisfaction", value: "100%" },
+                  { label: lang === "ar" ? "دعم" : "Support", value: "24/7" },
+                ].map((item, i) => (
+                  <div key={i} className="text-center">
+                    <div className="text-2xl font-bold text-foreground">{item.value}</div>
+                    <div className="text-sm text-secondary font-medium">{item.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>

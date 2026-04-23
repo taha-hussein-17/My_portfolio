@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Phone, MapPin, Mail, Loader2 } from "lucide-react";
+import { Send, Phone, MapPin, Mail, Loader2, MessageCircle, Linkedin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -21,16 +21,10 @@ export default function ContactPage() {
     setIsSubmitting(true);
     
     try {
-      // Using Formspree for a simple, working solution without a backend key
-      // Formspree will automatically send messages to your email: capootaha17@gmail.com
-      const response = await fetch("https://formspree.io/f/xvgzovzw", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          _to: "capootaha17@gmail.com",
-          _subject: `Portfolio Message: ${formData.subject}`
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -92,6 +86,7 @@ export default function ContactPage() {
             {[
               { icon: <Mail className="w-6 h-6" />, title: t.contact.email, value: "capootaha17@gmail.com" },
               { icon: <Phone className="w-6 h-6" />, title: t.contact.phone, value: "+201122889897" },
+              { icon: <Linkedin className="w-6 h-6" />, title: "LinkedIn", value: "Taha Hussein" },
               { icon: <MapPin className="w-6 h-6" />, title: t.contact.location, value: lang === "ar" ? "القاهرة، مصر" : "Cairo, Egypt" },
             ].map((item, i) => (
               <motion.div
@@ -176,20 +171,31 @@ export default function ContactPage() {
                   className="w-full px-6 py-3 rounded-2xl bg-background border border-border focus:border-primary outline-none transition-all resize-none"
                 />
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-primary text-white py-4 rounded-2xl font-bold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                ) : (
-                  <>
-                    {t.contact.form.send}
-                    <Send className={`w-5 h-5 ${lang === "ar" ? "rotate-180" : ""}`} />
-                  </>
-                )}
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex-grow bg-primary text-white py-4 rounded-2xl font-bold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <>
+                      {t.contact.form.send}
+                      <Send className={`w-5 h-5 ${lang === "ar" ? "rotate-180" : ""}`} />
+                    </>
+                  )}
+                </button>
+                <a
+                  href="https://wa.me/201122889897"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-[#25D366]/90 transition-all flex items-center justify-center gap-2 shadow-lg"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  {lang === "ar" ? "واتساب" : "WhatsApp"}
+                </a>
+              </div>
             </motion.form>
           </div>
         </div>

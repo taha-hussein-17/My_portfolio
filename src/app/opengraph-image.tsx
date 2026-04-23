@@ -41,7 +41,7 @@ export default function OGImage() {
             opacity: 0.9,
           }}
         >
-          Frontend Developer • Next.js Expert
+          SaaS Dashboard Expert • Next.js
         </div>
         <div
           style={{
@@ -50,7 +50,7 @@ export default function OGImage() {
             opacity: 0.85,
           }}
         >
-          Fast, modern websites that convert
+          High-performance real-time data solutions
         </div>
       </div>
     ),

@@ -79,7 +79,7 @@ export default function Loading() {
         >
           Preparing{" "}
           <span className="font-semibold text-primary">
-            Frontend Developer • Next.js Expert
+            SaaS Dashboard Expert • Next.js
           </span>{" "}
           experience...
         </motion.p>
@@ -87,5 +87,6 @@ export default function Loading() {
     </div>
   );
 }
+
 
 

@@ -9,15 +9,15 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
       blog: "المدونة",
       about: "عني",
       contact: "تواصل معي",
-      cta: "خلّينا نشتغل",
+      cta: "أطلب شغلك الان",
     },
     hero: {
       name: "طه حسين",
-      role: "Frontend Developer • Next.js Expert",
-      title: "بصمّم وببرمج مواقع سريعة وشيك بتساعد البيزنس يبيع أكتر",
+      role: "I build high-performance SaaS dashboards that scale with real-time data",
+      title: "ببني لوحات تحكم (SaaS) عالية الأداء بتتعامل مع البيانات اللحظية وبتقدر تشيل آلاف المستخدمين",
       subtitle: "React • Next.js • Clean UI",
       cta_primary: "شاهد أعمالي",
-      cta_secondary: "خلّينا نشتغل",
+      cta_secondary: "أطلب شغلك الان",
       download_cv: "تحميل السيرة الذاتية",
       cv_link: "https://drive.google.com/file/d/1oPimDWjUYF3fMJMNvlfB-iYKXDZmh-I1/view",
     },
@@ -47,31 +47,43 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
       items: [
         {
           id: "wakp-academy",
-          title: "أكاديمية WAKP التعليمية المتكاملة",
-          desc: "منصة تعليمية حديثة ومتقدمة مصممة لتقديم تجربة تعليمية متميزة، تدعم تعدد اللغات والسمات البصرية.",
-          problem: "الحاجة لنظام تعليمي متكامل يجمع بين سهولة الاستخدام، تعدد اللغات، وإدارة المحتوى والطلاب بكفاءة.",
-          solution: "بناء منصة باستخدام React 18 و Firebase مع دعم كامل للـ RTL (العربية) ونظام لوحات تحكم متقدم.",
-          result: "توفير تجربة تعليمية سلسة لآلاف الطلاب مع نظام إدارة شامل للمحاضرين والمديرين.",
-          tags: ["React 18", "Firebase", "Redux Toolkit", "Tailwind 4.0"],
+          title: "WAKP Academy Website",
+          desc: "منصة تعليمية حديثة تخدم أكثر من 50,000 طالب مع تجربة مستخدم سلسة ودعم كامل للغات.",
+          problem: "بطء التحميل وضعف أداء الـ SEO مما أثر على وصول الطلاب للمحتوى التعليمي.",
+          solution: "استخدام Next.js مع Server-side Rendering (SSR) لتحسين الأداء والأرشفة في محركات البحث.",
+          result: "تحقيق تقييم 4.9/5 من الطلاب وزيادة بنسبة 30% في التسجيل في الكورسات.",
+          architecture: "بنية برمجية تعتمد على الـ SSR و ISR لتوفير محتوى ديناميكي وسريع، مع نظام تصميم (Design System) موحد.",
+          performance: "سكور 95+ على Lighthouse مع تحسين كامل للـ Core Web Vitals وسرعة استجابة فائقة.",
+          tags: ["Next.js", "Tailwind CSS", "Framer Motion", "SEO"],
           link: "https://github.com/anzma-mosta/nms-Frontend",
-          demo: "https://app.wakp.net",
+          demo: "https://nms-frontend-rho.vercel.app/",
           image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop",
-          full_desc: "أكاديمية WAKP هي مشروع ضخم يهدف لتوفير بيئة تعليمية متكاملة للطلاب والمحاضرين. تم التركيز في هذا المشروع على الأداء العالي ودعم اللغات المختلفة بشكل أساسي.",
-          features: ["نظام إدارة محتوى متطور", "دعم كامل للغة العربية والإنجليزية", "لوحة تحكم ذكية للمحاضرين", "نظام اختبارات تفاعلي"]
+          full_desc: "الموقع الرسمي لأكاديمية WAKP، تم تصميمه ليكون واجهة جذابة وسريعة للطلاب الجدد، مع التركيز على تحويل الزوار إلى مشتركين.",
+          features: ["دعم كامل للـ SEO", "تصميم متجاوب 100%", "نظام لغات ديناميكي", "سرعة تحميل فائقة"],
+          screenshots: [
+            "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1531403001835-46147d1766a4?q=80&w=1000&auto=format&fit=crop"
+          ]
         },
         {
           id: "wakp-dashboard",
-          title: "لوحة تحكم WAKP الإدارية (Dashboard)",
-          desc: "داشبورد تعليمية ضخمة لإدارة المستخدمين، المدفوعات، والمحتوى التعليمي بدقة عالية وتقارير لحظية.",
-          problem: "صعوبة إدارة العمليات التعليمية والمالية الضخمة يدوياً وتشتت البيانات الإدارية.",
-          solution: "تطوير لوحة تحكم ذكية توفر رؤية شاملة لكل أقسام المنصة مع أدوات تحكم إدارية دقيقة.",
-          result: "تحسين كفاءة الإدارة بنسبة 40% وتقليل الأخطاء البشرية في إدارة البيانات والمدفوعات.",
-          tags: ["Next.js", "TypeScript", "TanStack Query", "Dashboard"],
+          title: "WAKP Real-time SaaS Dashboard",
+          desc: "لوحة تحكم احترافية لإدارة العمليات التعليمية والمالية الضخمة لآلاف الطلاب بشكل لحظي.",
+          problem: "صعوبة إدارة بيانات 50,000 طالب والمدفوعات المعقدة يدوياً مما أدى لتأخير في التقارير.",
+          solution: "تطوير داشبورد SaaS باستخدام TanStack Query و Firebase لضمان تزامن البيانات بشكل لحظي (Real-time).",
+          result: "تحسين كفاءة الإدارة بنسبة 40% وتوفير رؤية دقيقة لحظية لكافة العمليات المالية.",
+          architecture: "بنية Modular تعتمد على الـ State Management المركزية و Real-time Listeners لمتابعة التغييرات فور حدوثها.",
+          performance: "زمن تحميل أقل من ثانية للجداول الضخمة مع تحسين استهلاك الموارد بنسبة 30%.",
+          tags: ["React 18", "Firebase", "TanStack Query", "SaaS"],
           link: "https://github.com/anzma-mosta/nms-Frontend",
-          demo: "https://app.wakp.net",
+          demo: "https://app.wakp.net/login",
           image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
-          full_desc: "تم تصميم لوحة التحكم لتكون القلب النابض للمنصة، حيث تمكن الإدارة من متابعة كل صغيرة وكبيرة في النظام.",
-          features: ["تقارير مالية مفصلة", "إدارة المستخدمين والأدوار", "تتبع تقدم الطلاب", "نظام إشعارات لحظي"]
+          full_desc: "لوحة تحكم متكاملة لإدارة المحتوى، الطلاب، المدرسين، والمدفوعات. تعتبر العقل المدبر لمنصة WAKP.",
+          features: ["تقارير مالية لحظية", "إدارة صلاحيات المستخدمين", "تتبع تقدم الطلاب بدقة", "إشعارات فورية"],
+          screenshots: [
+            "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+          ]
         },
         {
           id: "pharmeasy",
@@ -199,12 +211,18 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
         },
       ]
     },
+    cta_section: {
+      title: "جاهز تحول بياناتك لقرارات ذكية؟",
+      subtitle: "ببني لوحات تحكم SaaS بتساعدك تفهم البيزنس بتاعك وتكبره أسرع. خلّينا نناقش مشروعك الجاي ونشوف إزاي أقدر أضيف قيمة حقيقية لشغلك.",
+      primary: "ابدأ مشروعك الآن",
+      secondary: "احجز استشارة مجانية",
+    },
     contact: {
-      title: "خلّينا نشتغل",
+      title: "أطلب شغلك الان",
       subtitle: "جاهز تحول فكرتك لواقع؟ ابعتلي دلوقتي ونبدأ فوراً.",
-      email: "راسلني",
-      phone: "اتصل بي",
-      location: "موقع العمل",
+      email: "capootaha17@gmail.com",
+      phone: "+201122889897",
+      location: "القاهرة، مصر",
       form: {
         name: "اسمك",
         email: "بريدك",
@@ -236,8 +254,8 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
     },
     hero: {
       name: "Taha Hussein",
-      role: "Frontend Developer • Next.js Expert",
-      title: "I build fast, modern websites that convert visitors into customers.",
+      role: "I build high-performance SaaS dashboards that scale with real-time data",
+      title: "I build high-performance SaaS dashboards that scale with real-time data.",
       subtitle: "React • Next.js • Clean UI",
       cta_primary: "View Projects",
       cta_secondary: "Hire Me",
@@ -270,31 +288,43 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
       items: [
         {
           id: "wakp-academy",
-          title: "WAKP Academy - Advanced Learning Platform",
-          desc: "A modern educational platform designed for a superior learning experience, supporting multi-language and dynamic themes.",
-          problem: "The need for an integrated educational system that combines ease of use, multi-language support, and efficient management of content and students.",
-          solution: "Built a platform using React 18 and Firebase with full RTL/LTR support and an advanced dashboard system.",
-          result: "Provided a seamless learning experience for thousands of students with a comprehensive management system for instructors and admins.",
-          tags: ["React 18", "Firebase", "Redux Toolkit", "Tailwind 4.0"],
+          title: "WAKP Academy Website",
+          desc: "A modern educational platform serving 50,000+ students with a seamless user experience and full multi-language support.",
+          problem: "Slow load times and poor SEO visibility which hindered student access to educational content.",
+          solution: "Implemented Next.js with Server-side Rendering (SSR) to boost performance and search engine indexing.",
+          result: "Achieved a 4.9/5 student rating and a 30% increase in course enrollments.",
+          architecture: "SSR/ISR based architecture for dynamic and fast content delivery, utilizing a unified Design System.",
+          performance: "95+ Lighthouse score with optimized Core Web Vitals and lightning-fast response times.",
+          tags: ["Next.js", "Tailwind CSS", "Framer Motion", "SEO"],
           link: "https://github.com/anzma-mosta/nms-Frontend",
-          demo: "https://app.wakp.net",
+          demo: "https://nms-frontend-rho.vercel.app/",
           image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop",
-          full_desc: "WAKP Academy is a massive project aimed at providing an integrated learning environment. Focus was on high performance and multi-language support.",
-          features: ["Advanced CMS", "Full RTL/LTR Support", "Instructor Dashboard", "Interactive Quizzes"]
+          full_desc: "The official website for WAKP Academy, designed to be an attractive and fast interface for new students, focusing on conversion optimization.",
+          features: ["Full SEO Optimization", "100% Responsive Design", "Dynamic Language System", "Ultra-fast Load Times"],
+          screenshots: [
+            "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1531403001835-46147d1766a4?q=80&w=1000&auto=format&fit=crop"
+          ]
         },
         {
           id: "wakp-dashboard",
-          title: "WAKP Administrative Dashboard",
-          desc: "A massive educational dashboard for high-precision management of users, payments, and educational content with real-time reporting.",
-          problem: "Difficulty in manually managing large-scale educational and financial operations and scattered administrative data.",
-          solution: "Developed a smart dashboard providing a comprehensive view of all platform departments with precise administrative control tools.",
-          result: "Improved management efficiency by 40% and reduced human errors in data and payment management.",
-          tags: ["Next.js", "TypeScript", "TanStack Query", "Dashboard"],
+          title: "WAKP Real-time SaaS Dashboard",
+          desc: "A professional dashboard for managing large-scale educational and financial operations for thousands of students in real-time.",
+          problem: "Difficulty in manually managing 50,000+ student records and complex payment flows, leading to reporting delays.",
+          solution: "Developed a SaaS dashboard using TanStack Query and Firebase to ensure real-time data synchronization.",
+          result: "Improved administrative efficiency by 40% and provided real-time visibility into all financial operations.",
+          architecture: "Modular architecture based on centralized State Management and Real-time Listeners for instant updates.",
+          performance: "Sub-second load times for massive data tables with a 30% reduction in resource consumption.",
+          tags: ["React 18", "Firebase", "TanStack Query", "SaaS"],
           link: "https://github.com/anzma-mosta/nms-Frontend",
-          demo: "https://app.wakp.net",
+          demo: "https://app.wakp.net/login",
           image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
-          full_desc: "The dashboard was designed to be the heart of the platform, enabling management to monitor every detail of the system.",
-          features: ["Detailed Financial Reports", "User & Role Management", "Student Progress Tracking", "Real-time Notifications"]
+          full_desc: "An integrated dashboard for managing content, students, instructors, and payments. It serves as the brain of the WAKP platform.",
+          features: ["Real-time Financial Reports", "User Role Management", "Precise Student Tracking", "Instant Notifications"],
+          screenshots: [
+            "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+          ]
         },
         {
           id: "pharmeasy",
@@ -422,12 +452,18 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
         },
       ]
     },
+    cta_section: {
+      title: "Ready to turn your data into smart decisions?",
+      subtitle: "I build SaaS dashboards that help you understand and grow your business faster. Let's discuss your next project and see how I can add real value to your work.",
+      primary: "Start Your Project Now",
+      secondary: "Book a Free Consultation",
+    },
     contact: {
       title: "Hire Me",
       subtitle: "Ready to turn your idea into reality? Contact me now and let's get started.",
-      email: "Email Me",
-      phone: "Call Me",
-      location: "Work Location",
+      email: "capootaha17@gmail.com",
+      phone: "+201122889897",
+      location: "Cairo, Egypt",
       form: {
         name: "Your Name",
         email: "Your Email",

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Twitter, Linkedin, Mail, } from "lucide-react";
+import { Github, Twitter, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
@@ -39,8 +39,11 @@ export default function Footer() {
                 <a href="#" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
                   <Twitter className="w-6 h-6" />
                 </a>
-                <a href="#" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
+                <a href="https://www.linkedin.com/in/taha-hussein-9abab3201" target="_blank" rel="noopener noreferrer" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
                   <Linkedin className="w-6 h-6" />
+                </a>
+                <a href="https://wa.me/201122889897" target="_blank" rel="noopener noreferrer" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
+                  <MessageCircle className="w-6 h-6" />
                 </a>
                 <a href="mailto:capootaha17@gmail.com" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
                   <Mail className="w-6 h-6" />

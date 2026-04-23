@@ -13,19 +13,17 @@ const cairo = Cairo({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://taha-portfolio.com"),
-  title: "طه بورتفوليو | مطور واجهات أمامية محترف",
+  title: "Taha Hussein | SaaS Dashboard Expert",
   description:
-    "اكتشف أعمال طه في تطوير تطبيقات الويب والواجهات الأمامية باستخدام Next.js و React. تصاميم عصرية وأداء عالٍ.",
+    "I build high-performance SaaS dashboards that scale with real-time data using Next.js and React. Specialized in scalable web applications.",
   keywords: [
-    "مطور ويب",
-    "برمجة",
-    "Next.js",
-    "React",
-    "بورتفوليو",
-    "تصميم واجهات",
-    "Landing Pages",
-    "Dashboards",
-    "Figma to Code",
+    "SaaS Dashboard",
+    "Real-time Data",
+    "Next.js Expert",
+    "React Developer",
+    "Scalable Web Apps",
+    "Frontend Architecture",
+    "High-performance UI",
   ],
   authors: [{ name: "طه حسين" }, { name: "Taha Hussein" }],
   icons: {
@@ -33,20 +31,20 @@ export const metadata: Metadata = {
     apple: "/me.png",
   },
   openGraph: {
-    title: "طه بورتفوليو | مطور واجهات أمامية محترف",
+    title: "Taha Hussein | SaaS Dashboard Expert",
     description:
-      "بورتفوليو احترافي يعرض أعمال Next.js و React مع تركيز على الأداء والتحويل.",
+      "I build high-performance SaaS dashboards that scale with real-time data using Next.js and React.",
     url: "https://taha-portfolio.com",
-    siteName: "طه بورتفوليو",
+    siteName: "Taha Hussein Portfolio",
     locale: "ar_EG",
     alternateLocale: ["en_US"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "طه بورتفوليو | مطور واجهات أمامية محترف",
+    title: "Taha Hussein | SaaS Dashboard Expert",
     description:
-      "بورتفوليو احترافي يعرض أعمال Next.js و React مع تركيز على الأداء والتحويل.",
+      "I build high-performance SaaS dashboards that scale with real-time data using Next.js and React.",
   },
   robots: {
     index: true,
@@ -74,7 +72,7 @@ export default function RootLayout({
               "@type": "Person",
               name: "Taha Hussein",
               alternateName: "طه حسين",
-              jobTitle: "Frontend Developer",
+              jobTitle: "SaaS Dashboard Expert",
               url: "https://taha-portfolio.com",
               sameAs: [
                 "https://github.com/taha-hussein-17"

@@ -39,6 +39,9 @@ export interface ProjectItem {
   image: string;
   full_desc?: string;
   features?: string[];
+  architecture?: string;
+  performance?: string;
+  screenshots?: string[];
 }
 
 export interface SkillItem {
@@ -138,6 +141,12 @@ export interface TranslationContent {
   faq: {
     title: string;
     items: FAQItem[];
+  };
+  cta_section: {
+    title: string;
+    subtitle: string;
+    primary: string;
+    secondary: string;
   };
   contact: {
     title: string;

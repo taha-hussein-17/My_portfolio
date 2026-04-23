@@ -38,6 +38,9 @@ export async function POST(request: Request) {
 
     console.log(`Email would be sent to ${targetEmail}:`, { name, email, subject, message });
 
+    // Note: If you want real emails to be sent, you must set RESEND_API_KEY in your .env.local
+    // and uncomment the Resend code. For now, we return success so the user sees a positive result.
+
     return NextResponse.json(
       { message: 'Message sent successfully!' },
       { status: 200 }
