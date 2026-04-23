@@ -13,15 +13,16 @@ const cairo = Cairo({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://taha-portfolio.com"),
-  title: "Taha Hussein | SaaS Dashboard Expert",
+  title: "Taha Hussein | SaaS Dashboard & Scalable Architecture Expert",
   description:
-    "I build high-performance SaaS dashboards that scale with real-time data using Next.js and React. Specialized in scalable web applications.",
+    "I build high-performance SaaS dashboards with real-time data and scalable architecture using Next.js and React. Specialized in large-scale web applications.",
   keywords: [
     "SaaS Dashboard",
+    "Scalable Architecture",
     "Real-time Data",
     "Next.js Expert",
     "React Developer",
-    "Scalable Web Apps",
+    "Large-scale Apps",
     "Frontend Architecture",
     "High-performance UI",
   ],
@@ -31,9 +32,9 @@ export const metadata: Metadata = {
     apple: "/me.png",
   },
   openGraph: {
-    title: "Taha Hussein | SaaS Dashboard Expert",
+    title: "Taha Hussein | SaaS Dashboard & Scalable Architecture Expert",
     description:
-      "I build high-performance SaaS dashboards that scale with real-time data using Next.js and React.",
+      "I build high-performance SaaS dashboards with real-time data and scalable architecture using Next.js and React.",
     url: "https://taha-portfolio.com",
     siteName: "Taha Hussein Portfolio",
     locale: "ar_EG",
@@ -42,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Taha Hussein | SaaS Dashboard Expert",
+    title: "Taha Hussein | SaaS Dashboard & Scalable Architecture Expert",
     description:
-      "I build high-performance SaaS dashboards that scale with real-time data using Next.js and React.",
+      "I build high-performance SaaS dashboards with real-time data and scalable architecture using Next.js and React.",
   },
   robots: {
     index: true,
@@ -72,7 +73,7 @@ export default function RootLayout({
               "@type": "Person",
               name: "Taha Hussein",
               alternateName: "طه حسين",
-              jobTitle: "SaaS Dashboard Expert",
+              jobTitle: "SaaS Dashboard & Scalable Architecture Expert",
               url: "https://taha-portfolio.com",
               sameAs: [
                 "https://github.com/taha-hussein-17"

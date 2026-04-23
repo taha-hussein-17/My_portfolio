@@ -41,7 +41,7 @@ export default function OGImage() {
             opacity: 0.9,
           }}
         >
-          SaaS Dashboard Expert • Next.js
+          SaaS Dashboard & Scalable Architecture Expert
         </div>
         <div
           style={{
@@ -50,7 +50,7 @@ export default function OGImage() {
             opacity: 0.85,
           }}
         >
-          High-performance real-time data solutions
+          Real-time data solutions with high performance
         </div>
       </div>
     ),

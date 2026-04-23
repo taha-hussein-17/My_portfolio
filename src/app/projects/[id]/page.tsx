@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, ExternalLink, Github, CheckCircle2, Layout, Shield, Zap, Cpu, Gauge } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github, CheckCircle2, Layout, Shield, Zap, Cpu, Gauge, Wrench } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -125,6 +125,12 @@ export default function ProjectDetails() {
                   content: project.solution,
                   bg: "bg-yellow-500/5"
                 },
+                ...(project.technique ? [{
+                  icon: <Wrench className="w-6 h-6 text-orange-500" />, 
+                  title: lang === "ar" ? "التكنيك المستخدم" : "The Technique", 
+                  content: project.technique,
+                  bg: "bg-orange-500/5"
+                }] : []),
                 { 
                   icon: <Layout className="w-6 h-6 text-green-500" />, 
                   title: lang === "ar" ? "النتيجة النهائية" : "The Result", 

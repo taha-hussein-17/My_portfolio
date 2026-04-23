@@ -139,11 +139,11 @@ export default function ProjectsPage() {
           {filtered.map((project: ProjectItem, index: number) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-card rounded-3xl overflow-hidden border border-border shadow-lg group hover:shadow-2xl transition-all"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-card rounded-3xl overflow-hidden border border-border shadow-lg group hover:shadow-2xl hover:border-primary/30 transition-all duration-500"
             >
               <div className="aspect-video relative overflow-hidden border-b border-border">
                 <Image 
@@ -151,9 +151,9 @@ export default function ProjectsPage() {
                   alt={project.title} 
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               
               <div className="p-8">

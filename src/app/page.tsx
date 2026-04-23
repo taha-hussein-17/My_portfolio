@@ -88,24 +88,24 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/projects"
-                className="bg-primary text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group shadow-xl w-full sm:w-auto"
+                className="bg-primary text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 group shadow-xl w-full sm:w-auto hover:shadow-primary/20 hover:-translate-y-1"
               >
                 {t.hero.cta_primary}
                 {lang === "ar" ? (
-                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
                 ) : (
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 )}
               </Link>
               <Link
                 href="/contact"
-                className="bg-accent text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-accent/90 transition-all flex items-center justify-center gap-2 group shadow-xl w-full sm:w-auto"
+                className="bg-accent text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-accent/90 transition-all duration-300 flex items-center justify-center gap-2 group shadow-xl w-full sm:w-auto hover:shadow-accent/20 hover:-translate-y-1"
               >
                 {t.hero.cta_secondary}
                 {lang === "ar" ? (
-                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
                 ) : (
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 )}
               </Link>
               <a
@@ -212,8 +212,8 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-card p-8 rounded-3xl shadow-lg border border-foreground/5 hover:border-primary/50 transition-all group"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-card p-8 rounded-3xl shadow-lg border border-border hover:border-primary/30 transition-all duration-500 group hover:-translate-y-2 hover:shadow-2xl"
               >
                 <div className="mb-6 p-4 bg-primary/5 rounded-2xl w-fit group-hover:scale-110 transition-transform">
                   {index === 0 && <Code className="w-10 h-10 text-primary" />}

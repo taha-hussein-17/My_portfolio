@@ -41,6 +41,7 @@ export interface ProjectItem {
   features?: string[];
   architecture?: string;
   performance?: string;
+  technique?: string;
   screenshots?: string[];
 }
 
