@@ -13,11 +13,11 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
     },
     hero: {
       name: "طه حسين",
-      role: "I build high-performance SaaS dashboards with real-time data and scalable architecture",
-      title: "ببني لوحات تحكم (SaaS) عالية الأداء تعتمد على البيانات اللحظية ومعمارية برمجية قابلة للتوسع",
-      subtitle: "React • Next.js • Scalable Architecture",
-      cta_primary: "شاهد أعمالي",
-      cta_secondary: "أطلب شغلك الان",
+      role: "Senior Frontend Architect & SaaS Specialist",
+      title: "ابنِ لوحات تحكم (Dashboards) ذكية تدفع نمو شركتك",
+      subtitle: "أقوم بتحويل البيانات المعقدة إلى واجهات تفاعلية ولحظية باستخدام React & Next.js. معمارية قابلة للتوسع، أداء فائق، وتركيز كامل على تجربة المستخدم والتحويل.",
+      cta_primary: "شاهد سجل النجاح",
+      cta_secondary: "ابدأ مشروعك الآن",
       download_cv: "تحميل السيرة الذاتية",
       cv_link: "https://drive.google.com/file/d/1xY4l3lsZtNV-5l572-FSRZLRUVQQpMKJ/view?usp=sharing",
     },
@@ -121,6 +121,38 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
       title: "المدونة",
       view_all: "عرض كل المقالات",
       items: [
+        {
+          id: "build-saas-dashboard-nextjs",
+          title: "دليلك الشامل لبناء لوحة تحكم SaaS احترافية باستخدام Next.js",
+          date: "2024-04-28",
+          excerpt: "تعلم كيفية بناء لوحات تحكم قابلة للتوسع، سريعة، ولحظية باستخدام أحدث تقنيات Next.js و React.",
+          content: `في عالم الـ SaaS، تعتبر لوحة التحكم (Dashboard) هي قلب المنتج. إذا كانت بطيئة أو صعبة الاستخدام، ستفقد عملائك بسرعة. في هذا الدليل، سأشاركك خبرتي في بناء لوحات تحكم عالمية المستوى.
+
+**1. لماذا Next.js هو الخيار الأفضل للـ SaaS؟**
+Next.js ليس مجرد إطار عمل لـ React، بل هو منظومة متكاملة توفر:
+- **Server Components:** لتقليل حجم الـ Bundle وتحسين سرعة التحميل الأولية.
+- **Streaming:** لعرض البيانات فور توفرها دون انتظار تحميل الصفحة بالكامل.
+- **API Routes:** لبناء Backend بسيط وسريع داخل نفس المشروع.
+
+**2. المعمارية البرمجية (Architecture)**
+لبناء لوحة تحكم قابلة للتوسع، يجب تقسيم الكود إلى:
+- **Modules:** كل ميزة (مثل الفواتير، الإحصائيات) يجب أن تكون موديول منفصل.
+- **Shared Components:** مكونات UI موحدة لضمان اتساق التصميم.
+- **State Management:** استخدام TanStack Query لإدارة البيانات اللحظية ومزامنتها.
+
+**3. الأداء هو المفتاح**
+في لوحات التحكم التي تحتوي على آلاف السجلات، نستخدم تقنيات مثل:
+- **Windowing/Virtualization:** لتحميل الصفوف الظاهرة فقط في الجداول الضخمة.
+- **Optimistic Updates:** لتحديث الواجهة فوراً قبل انتظار رد السيرفر، مما يعطي إحساساً بالسرعة الفائقة.
+
+**4. الأمان وصلاحيات المستخدمين (RBAC)**
+تأكد من استخدام Middleware في Next.js للتحقق من صلاحيات المستخدم قبل عرض أي صفحة حساسة.
+
+**الخلاصة:**
+بناء لوحة تحكم SaaS ليس مجرد ربط واجهات ببيانات، بل هو فن موازنة الأداء، الأمان، وتجربة المستخدم. إذا كنت تبحث عن خبير يساعدك في تحويل فكرتك إلى واقع، فلا تتردد في التواصل معي.`,
+          image: "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1000&auto=format&fit=crop",
+          category: "SaaS Development"
+        },
         {
           id: "nextjs-seo",
           title: "كيفية تحسين SEO في تطبيقات Next.js",
@@ -256,11 +288,11 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
     },
     hero: {
       name: "Taha Hussein",
-      role: "I build high-performance SaaS dashboards with real-time data and scalable architecture",
-      title: "I build high-performance SaaS dashboards with real-time data and scalable architecture.",
-      subtitle: "React • Next.js • Scalable Architecture",
-      cta_primary: "View Projects",
-      cta_secondary: "Hire Me",
+      role: "Senior Frontend Architect & SaaS Specialist",
+      title: "Build Intelligent Dashboards That Drive Business Growth",
+      subtitle: "I transform complex data into intuitive, real-time React & Next.js interfaces. Scalable architecture, lightning-fast performance, and a relentless focus on UX and conversion.",
+      cta_primary: "View Case Studies",
+      cta_secondary: "Start Your Project",
       download_cv: "Download CV",
       cv_link: "https://drive.google.com/file/d/1xY4l3lsZtNV-5l572-FSRZLRUVQQpMKJ/view?usp=sharing",
     },
@@ -365,8 +397,40 @@ export const translations: { ar: TranslationContent; en: TranslationContent } = 
       view_all: "View All Articles",
       items: [
         {
+          id: "build-saas-dashboard-nextjs",
+          title: "The Ultimate Guide to Building Scalable SaaS Dashboards with Next.js",
+          date: "2024-04-28",
+          excerpt: "Learn how to build scalable, fast, and real-time dashboards using the latest Next.js and React features.",
+          content: `In the SaaS world, the dashboard is the heart of your product. If it's slow or hard to use, you'll lose customers fast. In this guide, I'll share my experience in building world-class dashboards.
+
+**1. Why Next.js is the Best Choice for SaaS?**
+Next.js isn't just a React framework; it's a complete ecosystem that provides:
+- **Server Components:** To reduce bundle size and improve initial load speed.
+- **Streaming:** To display data as soon as it's available without waiting for the full page load.
+- **API Routes:** To build a fast and simple backend within the same project.
+
+**2. Scalable Architecture**
+To build a dashboard that scales, you must organize your code into:
+- **Modules:** Each feature (like billing, analytics) should be a separate module.
+- **Shared Components:** Unified UI components to ensure design consistency.
+- **State Management:** Using TanStack Query for real-time data management and synchronization.
+
+**3. Performance is Key**
+In dashboards containing thousands of records, we use techniques like:
+- **Windowing/Virtualization:** To load only visible rows in massive tables.
+- **Optimistic Updates:** To update the UI immediately before waiting for the server response, giving a lightning-fast feel.
+
+**4. Security and User Permissions (RBAC)**
+Ensure you use Next.js Middleware to verify user permissions before rendering any sensitive page.
+
+**Conclusion:**
+Building a SaaS dashboard is not just about connecting interfaces to data; it's the art of balancing performance, security, and user experience. If you're looking for an expert to help turn your idea into reality, don't hesitate to reach out.`,
+          image: "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1000&auto=format&fit=crop",
+          category: "SaaS Development"
+        },
+        {
           id: "nextjs-seo",
-          title: "How to Optimize SEO in Next.js Apps",
+          title: "How to Improve SEO in Next.js Applications",
           date: "2024-03-01",
           excerpt: "Learn best practices for improving your site's search engine visibility with Next.js 14.",
           content: "Next.js provides powerful SEO tools like Metadata API and Server Components. In this article, we'll cover how to use them...",
