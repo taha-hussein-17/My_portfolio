@@ -40,6 +40,13 @@ export const metadata: Metadata = {
     locale: "ar_EG",
     alternateLocale: ["en_US"],
     type: "website",
+    images: [
+      {
+        url: "/me.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -50,6 +57,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  verification: {
+    google: "vQeAcGZbpyKH39W63nQ6LTab0Ac8MqjseMePeJlyMi8",
   },
 };
 
