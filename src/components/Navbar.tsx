@@ -77,7 +77,7 @@ export default function Navbar() {
               <motion.div key={link.name} whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
                 <Link
                   href={link.href}
-                  className="text-foreground/70 hover:text-primary transition-all flex items-center gap-2 font-medium relative group"
+                  className="text-foreground/70 hover:text-primary transition-all flex items-center gap-2 font-black uppercase tracking-widest text-[10px] relative group"
                 >
                   {link.icon}
                   {link.name}
@@ -101,7 +101,7 @@ export default function Navbar() {
           {/* Language Toggle */}
           <button
             onClick={() => setLang(lang === "ar" ? "en" : "ar")}
-            className="p-2 rounded-full hover:bg-secondary/10 transition-colors flex items-center gap-2 font-bold text-sm text-foreground"
+            className="p-2 rounded-full hover:bg-secondary/10 transition-colors flex items-center gap-2 font-black text-[10px] text-foreground uppercase tracking-widest"
           >
             <Languages className="w-5 h-5" />
             {lang === "ar" ? "EN" : "عربي"}
@@ -109,7 +109,7 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-all shadow-md hover:shadow-lg"
+            className="bg-foreground text-background px-6 py-2 rounded-none font-black uppercase tracking-widest text-[10px] hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg"
           >
             {t.nav.cta}
           </Link>

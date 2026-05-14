@@ -8,53 +8,59 @@ export default function Footer() {
   const { t, lang } = useLanguage();
 
   return (
-    <footer className="bg-background border-t py-12">
+    <footer className="bg-background border-t border-border py-20">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div>
-            <Link href="/" className="text-2xl font-bold gradient-text">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-16">
+          <div className="max-w-md">
+            <Link href="/" className="text-3xl font-black uppercase tracking-tighter">
               {lang === "ar" ? "طه حسين" : "Taha Hussein"}
             </Link>
-            <p className="mt-4 text-secondary max-w-xs">
+            <p className="mt-6 text-secondary text-lg font-medium leading-relaxed">
               {t.footer.desc}
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-12">
-            <div className="space-y-4 text-center md:text-right">
-              <h3 className="font-bold text-lg">{lang === "ar" ? "روابط سريعة" : "Quick Links"}</h3>
-              <ul className="space-y-2">
-                <li><Link href="/projects" className="text-secondary hover:text-primary transition-colors">{t.nav.projects}</Link></li>
-                <li><Link href="/services" className="text-secondary hover:text-primary transition-colors">{t.nav.services}</Link></li>
-                <li><Link href="/blog" className="text-secondary hover:text-primary transition-colors">{t.nav.blog}</Link></li>
-                <li><Link href="/faq" className="text-secondary hover:text-primary transition-colors">{t.faq.title}</Link></li>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-20">
+            <div className="space-y-6">
+              <h3 className="font-black uppercase tracking-[0.2em] text-xs text-primary">{lang === "ar" ? "روابط سريعة" : "Quick Links"}</h3>
+              <ul className="space-y-4">
+                <li><Link href="/projects" className="text-secondary font-black uppercase tracking-widest text-[10px] hover:text-primary transition-colors">{t.nav.projects}</Link></li>
+                <li><Link href="/services" className="text-secondary font-black uppercase tracking-widest text-[10px] hover:text-primary transition-colors">{t.nav.services}</Link></li>
+                <li><Link href="/blog" className="text-secondary font-black uppercase tracking-widest text-[10px] hover:text-primary transition-colors">{t.nav.blog}</Link></li>
+                <li><Link href="/faq" className="text-secondary font-black uppercase tracking-widest text-[10px] hover:text-primary transition-colors">{t.faq.title}</Link></li>
               </ul>
             </div>
-            <div className="space-y-4 text-center md:text-right">
-              <h3 className="font-bold text-lg">{lang === "ar" ? "تواصل معي" : "Connect"}</h3>
-              <div className="flex gap-4 justify-center md:justify-end">
-                <a href="https://github.com/taha-hussein-17" target="_blank" rel="noopener noreferrer" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
-                  <Github className="w-6 h-6" />
-                </a>
-                <a href="#" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
-                  <Twitter className="w-6 h-6" />
-                </a>
-                <a href="https://www.linkedin.com/in/taha-hussein-9abab3201" target="_blank" rel="noopener noreferrer" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a href="https://wa.me/201122889897" target="_blank" rel="noopener noreferrer" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
-                  <MessageCircle className="w-6 h-6" />
-                </a>
-                <a href="mailto:capootaha17@gmail.com" className="p-2 bg-secondary/10 rounded-xl text-secondary hover:text-primary transition-all hover:scale-110">
-                  <Mail className="w-6 h-6" />
-                </a>
+            <div className="space-y-6">
+              <h3 className="font-black uppercase tracking-[0.2em] text-xs text-primary">{lang === "ar" ? "تواصل معي" : "Connect"}</h3>
+              <div className="flex flex-wrap gap-4">
+                {[
+                  { icon: <Github className="w-5 h-5" />, href: "https://github.com/taha-hussein-17" },
+                  { icon: <Twitter className="w-5 h-5" />, href: "#" },
+                  { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/taha-hussein-9abab3201" },
+                  { icon: <MessageCircle className="w-5 h-5" />, href: "https://wa.me/201122889897" },
+                  { icon: <Mail className="w-5 h-5" />, href: "mailto:capootaha17@gmail.com" },
+                ].map((social, i) => (
+                  <a 
+                    key={i}
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-3 bg-card border border-border rounded-xl text-secondary hover:text-primary hover:border-primary/30 transition-all hover:-translate-y-1"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t text-center text-secondary text-sm">
+        <div className="mt-20 pt-10 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6 text-secondary font-black uppercase tracking-[0.2em] text-[10px]">
           <p>© {new Date().getFullYear()} {lang === "ar" ? "طه بورتفوليو" : "Taha Portfolio"}. {t.footer.rights}</p>
+          <div className="flex gap-8">
+            <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

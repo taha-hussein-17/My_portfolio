@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { translations } from "./translations";
 import { TranslationContent } from "@/types";
 
@@ -15,14 +15,20 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Language>(() => {
-    if (typeof window === "undefined") return "ar";
+  const [lang, setLang] = useState<Language>("ar");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
     const saved = localStorage.getItem("lang") as Language | null;
-    const initial = saved ?? "ar";
-    document.documentElement.lang = initial;
-    document.documentElement.dir = initial === "ar" ? "rtl" : "ltr";
-    return initial;
-  });
+    if (saved) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLang(saved);
+      document.documentElement.lang = saved;
+      document.documentElement.dir = saved === "ar" ? "rtl" : "ltr";
+    }
+    setIsMounted(true);
+  }, []);
 
   const handleSetLang = (newLang: Language) => {
     setLang(newLang);

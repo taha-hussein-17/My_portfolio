@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Code, Palette, Rocket, CheckCircle2, Quote, Plus, Minus, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Code, Palette, Rocket, CheckCircle2, Quote, Plus, Minus, Download, Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { StatItem, SkillItem, SkillGridItem, ProjectItem, ExperienceItem, TestimonialItem, FAQItem, ServiceItem } from "@/types";
 import { useEffect, useState } from "react";
@@ -11,158 +11,206 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const { t, lang } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [displayedRole, setDisplayedRole] = useState("");
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const fullRole = t.hero.role;
-
-  useEffect(() => {
-    if (!fullRole) return;
-
-    const isAtEnd = charIndex === fullRole.length;
-    const isAtStart = charIndex === 0;
-
-    const typingSpeed = isDeleting ? 60 : 120;
-    const pauseDuration = 1600;
-
-    const timeoutDuration =
-      !isDeleting && isAtEnd ? pauseDuration : typingSpeed;
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting && charIndex < fullRole.length) {
-        const nextIndex = charIndex + 1;
-        setDisplayedRole(fullRole.slice(0, nextIndex));
-        setCharIndex(nextIndex);
-      } else if (!isDeleting && isAtEnd) {
-        setIsDeleting(true);
-      } else if (isDeleting && charIndex > 0) {
-        const nextIndex = charIndex - 1;
-        setDisplayedRole(fullRole.slice(0, nextIndex));
-        setCharIndex(nextIndex);
-      } else if (isDeleting && isAtStart) {
-        setIsDeleting(false);
-      }
-    }, timeoutDuration);
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, fullRole, isDeleting]);
 
   return (
     <div className="overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-20">
-        {/* Background Decorative Elements */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-700" />
+      {/* Hero Section - Redesigned to match brand image */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-background">
+        {/* Background Patterns (Subtle) */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05]">
+          <div className="absolute top-1/4 left-1/4 rotate-12">
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M10,10 L90,90 M90,10 L10,90" />
+            </svg>
+          </div>
+          <div className="absolute bottom-1/4 right-1/4 -rotate-12">
+            <svg width="150" height="150" viewBox="0 0 150 150" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="75" cy="75" r="50" />
+            </svg>
+          </div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10">
+            <svg width="400" height="400" viewBox="0 0 400 400" fill="none" stroke="currentColor" strokeWidth="1">
+              <path d="M200,50 L350,300 L50,300 Z" />
+            </svg>
+          </div>
+        </div>
 
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20"
+        {/* Left Side: Social Icons */}
+        <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-20 hidden sm:flex">
+          {[
+            { icon: <Facebook className="w-5 h-5" />, href: "#" },
+            { icon: <Twitter className="w-5 h-5" />, href: "#" },
+            { icon: <Instagram className="w-5 h-5" />, href: "#" },
+            { icon: <Linkedin className="w-5 h-5" />, href: "#" },
+          ].map((social, i) => (
+            <motion.a
+              key={i}
+              href={social.href}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 + i * 0.1 }}
+              className="text-foreground/40 hover:text-primary transition-colors p-2"
             >
-              <span className="text-sm font-bold text-primary uppercase tracking-widest flex items-center gap-1">
-                <span>{displayedRole || fullRole}</span>
-                <span className="inline-block w-[2px] h-4 md:h-5 bg-primary animate-pulse" />
-              </span>
-            </motion.div>
+              {social.icon}
+            </motion.a>
+          ))}
+        </div>
 
-            <h1 className="text-4xl md:text-7xl font-bold mb-4 leading-tight">
-              {lang === 'ar' ? 'أنا ' : "I'm "}<span className="gradient-text">{t.hero.name}</span>
-            </h1>
-            
-            <h2 className="text-2xl md:text-4xl font-bold mb-8 text-foreground/80">
-              {t.hero.title}
-            </h2>
-
-            <p className="text-lg md:text-xl text-secondary mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
-              {t.hero.subtitle}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                href="/projects"
-                className="bg-primary text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 group shadow-xl w-full sm:w-auto hover:shadow-primary/20 hover:-translate-y-1"
-              >
-                {t.hero.cta_primary}
-                {lang === "ar" ? (
-                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-                ) : (
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                )}
-              </Link>
-              <Link
-                href="/contact"
-                className="bg-accent text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-accent/90 transition-all duration-300 flex items-center justify-center gap-2 group shadow-xl w-full sm:w-auto hover:shadow-accent/20 hover:-translate-y-1"
-              >
-                {t.hero.cta_secondary}
-                {lang === "ar" ? (
-                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-                ) : (
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                )}
-              </Link>
-              <a
-                href={t.hero.cv_link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-card text-foreground px-8 py-4 rounded-full text-lg font-bold hover:bg-secondary/10 transition-all border border-border flex items-center justify-center gap-2 group w-full sm:w-auto"
-              >
-                <Download className="w-5 h-5 group-hover:bounce transition-transform" />
-                {t.hero.download_cv}
-              </a>
+        {/* Right Side: Scroll Down Indicator */}
+        <div className="absolute right-6 md:right-12 bottom-12 z-20 hidden sm:block">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 1, repeat: Infinity, repeatType: "reverse" }}
+            className="flex flex-col items-center gap-4"
+          >
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] rotate-90 origin-center translate-y-[-40px]">
+              {lang === "ar" ? "انزل للأسفل" : "Scroll Down"}
+            </span>
+            <div className="w-[1px] h-12 bg-foreground/20 relative">
+              <div className="absolute top-0 left-0 w-full h-1/2 bg-primary" />
             </div>
           </motion.div>
         </div>
+
+        {/* Bottom Left: Numbering */}
+        <div className="absolute left-6 md:left-12 bottom-12 z-20 hidden sm:block">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="flex items-end gap-2"
+          >
+            <span className="text-6xl md:text-8xl font-black text-foreground/5 dark:text-white/10 leading-none">01</span>
+            <div className="h-[2px] w-12 bg-primary mb-4" />
+          </motion.div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-0">
+            {/* Profile Image with Blob */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative w-full max-w-[320px] md:max-w-[450px] aspect-square lg:order-1"
+            >
+              {/* Blob Background */}
+              <div className="absolute inset-0 bg-secondary/10 dark:bg-white/5 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] animate-blob" />
+              <div className="absolute inset-4 bg-primary/10 rounded-[40%_60%_60%_40%/40%_40%_60%_60%] animate-blob animation-delay-2000" />
+              
+              {/* Image Container */}
+              <div className="relative z-10 w-full h-full overflow-hidden rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-4 border-background shadow-2xl">
+                <Image
+                  src="/me.png"
+                  alt={t.hero.name}
+                  fill
+                  priority
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110"
+                />
+              </div>
+            </motion.div>
+
+            {/* Text Content */}
+            <div className="flex-1 text-center lg:text-left lg:order-2">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className={lang === "ar" ? "lg:text-right" : ""}
+              >
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-4 uppercase">
+                  <span className="block text-foreground">{lang === 'ar' ? 'مطور' : 'Creative'}</span>
+                  <span className="block gradient-text">{lang === 'ar' ? 'مبدع' : 'Developer'}</span>
+                </h1>
+                
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-lg md:text-xl text-secondary font-medium tracking-[0.2em] uppercase mb-10"
+                >
+                  {t.hero.role}
+                </motion.p>
+
+                <div className={`flex flex-col sm:flex-row gap-6 justify-start items-center ${lang === "ar" ? "lg:justify-start" : "lg:justify-start"}`}>
+                  <Link
+                    href="/projects"
+                    className="relative group overflow-hidden bg-foreground text-background px-10 py-4 rounded-none font-bold text-sm tracking-widest uppercase transition-all hover:bg-primary hover:text-white"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      {t.hero.cta_primary}
+                      {lang === "ar" ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+                    </span>
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="text-foreground/60 hover:text-primary font-bold text-sm tracking-widest uppercase transition-colors flex items-center gap-2 group"
+                  >
+                    {t.hero.cta_secondary}
+                    <div className="w-8 h-[1px] bg-foreground/20 group-hover:w-12 group-hover:bg-primary transition-all" />
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-12 border-y border-border bg-card/50">
+      {/* Stats Section - Brand Refined */}
+      <section className="py-20 border-y border-border bg-card/50">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
             {t.stats.items.map((stat: StatItem, i: number) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center"
+                className="text-center group"
               >
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-secondary text-sm md:text-base font-medium">{stat.label}</div>
+                <div className="text-4xl md:text-6xl font-black text-primary mb-4 group-hover:scale-110 transition-transform duration-500">{stat.value}</div>
+                <div className="text-secondary text-xs md:text-sm font-black uppercase tracking-[0.2em]">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Me Section (Added) */}
-      <section className="py-24">
+      {/* About Me Section - Refined for Branding */}
+      <section className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: lang === "ar" ? 50 : -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative aspect-square max-w-md mx-auto md:mx-0"
+              className="relative"
             >
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl" />
-              <div className="relative z-10 w-full h-full bg-card rounded-[2.5rem] overflow-hidden border-8 border-background shadow-2xl min-h-[400px]">
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+              <div className="relative z-10 aspect-square overflow-hidden rounded-[2rem] border-8 border-card shadow-2xl">
                 <Image 
                   src="/me.png" 
                   alt="Taha Hussein" 
                   fill
                   priority
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-100"
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </div>
+              {/* Floating Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="absolute -bottom-6 -right-6 bg-primary text-white p-8 rounded-full shadow-2xl z-20 hidden sm:block"
+              >
+                <div className="text-center">
+                  <span className="block text-3xl font-black leading-none">+4</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest">{lang === 'ar' ? 'سنوات خبرة' : 'Years Exp'}</span>
+                </div>
+              </motion.div>
             </motion.div>
 
             <motion.div
@@ -170,39 +218,56 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {lang === "ar" ? "من هو " : "Who is "}
-                <span className="gradient-text">طه حسين؟</span>
+              <span className="text-primary font-black uppercase tracking-[0.3em] text-sm mb-4 block">
+                {lang === "ar" ? "من أنا؟" : "Who is Taha?"}
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                {lang === "ar" ? "أنا متخصص في بناء " : "Specialized in Building "}
+                <span className="gradient-text">{lang === 'ar' ? 'لوحات تحكم ذكية' : 'Intelligent Dashboards'}</span>
               </h2>
-              <p className="text-secondary text-lg mb-8 leading-relaxed">
+              <p className="text-secondary text-xl mb-10 leading-relaxed font-medium">
                 {t.about.desc}
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-                {t.about.skills.slice(0, 2).map((skill: SkillItem, i: number) => (
-                  <div key={i} className="flex gap-3 items-center">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                    <span className="font-bold">{skill.title}</span>
+              
+              <div className="space-y-6 mb-12">
+                {t.about.skills.slice(0, 3).map((skill: SkillItem, i: number) => (
+                  <div key={i} className="flex gap-4 items-start group">
+                    <div className="w-12 h-12 rounded-xl bg-card border border-border flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/20 transition-all">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-black uppercase text-sm tracking-widest mb-1">{skill.title}</h3>
+                      <p className="text-secondary text-sm">{skill.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
+
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all"
+                className="inline-flex items-center gap-4 text-foreground font-black uppercase tracking-widest text-sm hover:gap-6 transition-all group"
               >
-                {t.hero.cta_secondary}
-                {lang === "ar" ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+                {lang === 'ar' ? 'اقرأ المزيد عني' : 'Read More About Me'}
+                <div className="w-12 h-[2px] bg-primary group-hover:w-16 transition-all" />
               </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services/Features Section */}
-      <section className="py-24 bg-secondary/5">
+      {/* Services/Features Section - Brand Refined */}
+      <section className="py-32 bg-card/30">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.services.title}</h2>
-            <div className="w-20 h-1.5 bg-primary mx-auto rounded-full" />
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-2xl">
+              <span className="text-primary font-black uppercase tracking-[0.3em] text-sm mb-4 block">
+                {lang === "ar" ? "خدماتنا" : "Our Services"}
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black">
+                {lang === "ar" ? "حلول تقنية " : "Digital Solutions for "}
+                <span className="gradient-text">{lang === 'ar' ? 'مبتكرة' : 'Your Business'}</span>
+              </h2>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -213,15 +278,17 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card p-8 rounded-3xl shadow-lg border border-border hover:border-primary/30 transition-all duration-500 group hover:-translate-y-2 hover:shadow-2xl"
+                className="bg-background p-10 rounded-[2.5rem] border border-border hover:border-primary/50 transition-all group shadow-xl hover:shadow-primary/5"
               >
-                <div className="mb-6 p-4 bg-primary/5 rounded-2xl w-fit group-hover:scale-110 transition-transform">
-                  {index === 0 && <Code className="w-10 h-10 text-primary" />}
-                  {index === 1 && <Palette className="w-10 h-10 text-accent" />}
-                  {index === 2 && <Rocket className="w-10 h-10 text-green-500" />}
+                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  {index === 0 && <Code className="w-8 h-8 text-primary" />}
+                  {index === 1 && <Palette className="w-8 h-8 text-primary" />}
+                  {index === 2 && <Rocket className="w-8 h-8 text-primary" />}
                 </div>
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-secondary leading-relaxed">{service.desc}</p>
+                <h3 className="text-xl font-bold mb-4 uppercase tracking-tighter">{service.title}</h3>
+                <p className="text-secondary leading-relaxed font-medium">
+                  {service.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -267,61 +334,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Preview */}
-      <section className="py-24">
+      {/* Projects Section - Brand Refined */}
+      <section className="py-32">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.projects.title}</h2>
-              <div className="w-20 h-1.5 bg-accent rounded-full" />
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-2xl">
+              <span className="text-primary font-black uppercase tracking-[0.3em] text-sm mb-4 block">
+                {lang === "ar" ? "أعمال مختارة" : "Selected Works"}
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black">
+                {lang === "ar" ? "مشاريع تعكس " : "Projects that reflect "}
+                <span className="gradient-text">{lang === 'ar' ? 'القيمة والجودة' : 'Value & Quality'}</span>
+              </h2>
             </div>
-            <Link href="/projects" className="text-primary font-bold hover:underline flex items-center gap-2">
-              {t.projects.view_all} {lang === "ar" ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+            <Link
+              href="/projects"
+              className="text-foreground font-black uppercase tracking-widest text-sm hover:text-primary transition-colors flex items-center gap-2 group"
+            >
+              {t.projects.view_all}
+              <ArrowRight className={`w-5 h-5 group-hover:translate-x-2 transition-transform ${lang === 'ar' ? 'rotate-180' : ''}`} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {t.projects.items.slice(0, 2).map((project: ProjectItem, i: number) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {t.projects.items.slice(0, 4).map((project: ProjectItem, i: number) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative group overflow-hidden rounded-3xl aspect-video bg-card border border-border shadow-sm hover:shadow-xl transition-all"
+                transition={{ delay: i * 0.1 }}
+                className="group relative"
               >
-                <div className="absolute inset-0 z-0">
-                  <Image 
-                    src={project.image} 
-                    alt={project.title} 
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-background border border-border">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
                     fill
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 p-6 flex flex-col justify-end">
-                  <div className="flex gap-2 mb-3">
-                    {project.tags.slice(0, 2).map(tag => (
-                      <span key={tag} className="text-[10px] font-bold px-2 py-0.5 bg-primary text-white rounded-full uppercase">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">{project.title}</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
-                  <div className="space-y-2 mb-4">
-                    <p className="text-[10px] text-foreground/90 leading-tight"><span className="font-bold text-primary">{lang === 'ar' ? 'المشكلة: ' : 'Problem: '}</span>{project.problem}</p>
-                    <p className="text-[10px] text-foreground/90 leading-tight"><span className="font-bold text-primary">{lang === 'ar' ? 'الحل: ' : 'Solution: '}</span>{project.solution}</p>
-                    <p className="text-[10px] text-foreground/90 leading-tight"><span className="font-bold text-primary">{lang === 'ar' ? 'النتيجة: ' : 'Result: '}</span>{project.result}</p>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Link href={`/projects`} className="bg-primary text-white px-5 py-2 rounded-full font-bold hover:bg-primary/90 transition-colors text-xs">
-                      {t.projects.details}
+                  {/* Overlay Info */}
+                  <div className="absolute inset-0 p-10 flex flex-col justify-end translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="flex gap-2 mb-4">
+                      {project.tags.slice(0, 3).map(tag => (
+                        <span key={tag} className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-primary text-white rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter text-white">{project.title}</h3>
+                    <Link 
+                      href={`/projects`}
+                      className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary hover:text-white transition-colors"
+                    >
+                      {lang === 'ar' ? 'تفاصيل المشروع' : 'View Project'}
+                      <ArrowRight className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} />
                     </Link>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground px-4 py-2 rounded-full font-bold hover:bg-white/20 transition-colors text-xs flex items-center gap-2">
-                      <Code className="w-3 h-3" />
-                      GitHub
-                    </a>
                   </div>
                 </div>
               </motion.div>

@@ -77,40 +77,45 @@ export default function ProjectsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.projects.title}</h1>
-          <p className="text-secondary max-w-2xl mx-auto text-lg">
+          <span className="text-primary font-black uppercase tracking-[0.3em] text-sm mb-4 block">
+            {lang === "ar" ? "معرض الأعمال" : "Portfolio"}
+          </span>
+          <h1 className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">{t.projects.title}</h1>
+          <p className="text-secondary max-w-2xl mx-auto text-xl font-medium">
             {t.projects.view_all}
           </p>
         </motion.div>
 
-        {/* Controls */}
-        <div className="bg-card border border-border rounded-3xl p-6 mb-8">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <input
-              aria-label={lang === "ar" ? "ابحث في المشاريع" : "Search projects"}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder={lang === "ar" ? "ابحث بالعنوان أو التقنية..." : "Search by title or tech..."}
-              className="w-full md:w-1/2 px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            <div className="flex items-center gap-3">
-              <label className="text-sm text-secondary font-bold">{lang === "ar" ? "الترتيب" : "Sort"}</label>
+        {/* Controls - Refined */}
+        <div className="bg-card/50 backdrop-blur-md border border-border rounded-[2rem] p-8 mb-12 shadow-xl">
+          <div className="flex flex-col md:flex-row gap-8 items-center justify-between">
+            <div className="relative w-full md:w-1/2">
+              <input
+                aria-label={lang === "ar" ? "ابحث في المشاريع" : "Search projects"}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={lang === "ar" ? "ابحث بالعنوان أو التقنية..." : "Search by title or tech..."}
+                className="w-full px-6 py-4 rounded-2xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary font-medium"
+              />
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-black uppercase tracking-widest text-secondary">{lang === "ar" ? "الترتيب" : "Sort"}</span>
               <select
                 aria-label={lang === "ar" ? "ترتيب المشاريع" : "Sort projects"}
                 value={sort}
                 onChange={(e) => setSort(e.target.value as "alpha" | "tags")}
-                className="px-3 py-2 rounded-xl border border-border bg-background"
+                className="px-4 py-3 rounded-xl border border-border bg-background font-bold text-sm"
               >
                 <option value="alpha">{lang === "ar" ? "أبجدي" : "Alphabetical"}</option>
                 <option value="tags">{lang === "ar" ? "الأكثر تقنيات" : "Most tags"}</option>
               </select>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-3 mt-8">
             <button
               onClick={() => setSelectedTags([])}
-              className={`px-3 py-1 rounded-full text-xs font-bold border ${selectedTags.length === 0 ? "bg-primary text-white border-primary" : "bg-card border-border text-foreground"}`}
+              className={`px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest border transition-all ${selectedTags.length === 0 ? "bg-primary text-white border-primary shadow-lg shadow-primary/20" : "bg-card border-border text-foreground hover:border-primary/50"}`}
             >
               {lang === "ar" ? "الكل" : "All"}
             </button>
@@ -118,24 +123,15 @@ export default function ProjectsPage() {
               <button
                 key={tname}
                 onClick={() => toggleTag(tname)}
-                className={`px-3 py-1 rounded-full text-xs font-bold border ${selectedTags.includes(tname) ? "bg-primary text-white border-primary" : "bg-card border-border text-foreground"}`}
+                className={`px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest border transition-all ${selectedTags.includes(tname) ? "bg-primary text-white border-primary shadow-lg shadow-primary/20" : "bg-card border-border text-foreground hover:border-primary/50"}`}
               >
                 {tname}
               </button>
             ))}
-            {selectedTags.length > 0 && (
-              <button
-                aria-label={lang === "ar" ? "مسح الفلتر" : "Clear filter"}
-                onClick={() => setSelectedTags([])}
-                className="ml-auto flex items-center gap-1 text-xs font-bold text-secondary hover:text-foreground"
-              >
-                <X className="w-3 h-3" /> {lang === "ar" ? "مسح الفلتر" : "Clear"}
-              </button>
-            )}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filtered.map((project: ProjectItem, index: number) => (
             <motion.div
               key={index}
@@ -143,63 +139,48 @@ export default function ProjectsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card rounded-3xl overflow-hidden border border-border shadow-lg group hover:shadow-2xl hover:border-primary/30 transition-all duration-500"
+              className="group bg-card rounded-[2.5rem] overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-2xl"
             >
-              <div className="aspect-video relative overflow-hidden border-b border-border">
+              <div className="aspect-video relative overflow-hidden">
                 <Image 
                   src={project.image} 
                   alt={project.title} 
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               
               <div className="p-8">
-                <div className="flex gap-2 mb-4 flex-wrap">
+                <div className="flex gap-2 mb-6 flex-wrap">
                   {project.tags.map(tag => (
-                    <span key={tag} className="text-xs font-bold px-3 py-1 bg-primary/10 text-primary rounded-full">
+                    <span key={tag} className="text-[10px] font-black uppercase tracking-widest px-3 py-1 bg-primary/10 text-primary rounded-full">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter group-hover:text-primary transition-colors">
                   <Link href={`/projects/${project.id}`}>
                     {project.title}
                   </Link>
                 </h3>
-                <p className="text-secondary mb-4 text-sm leading-relaxed">
+                <p className="text-secondary mb-8 text-sm leading-relaxed font-medium line-clamp-2">
                   {project.desc}
                 </p>
-                <div className="space-y-3 mb-6 bg-secondary/5 p-4 rounded-2xl">
-                  <p className="text-xs text-secondary leading-relaxed">
-                    <span className="font-bold text-primary block mb-1">{lang === 'ar' ? 'المشكلة:' : 'The Problem:'}</span>
-                    {project.problem}
-                  </p>
-                  <p className="text-xs text-secondary leading-relaxed">
-                    <span className="font-bold text-primary block mb-1">{lang === 'ar' ? 'الحل:' : 'The Solution:'}</span>
-                    {project.solution}
-                  </p>
-                  <p className="text-xs text-secondary leading-relaxed">
-                    <span className="font-bold text-primary block mb-1">{lang === 'ar' ? 'النتيجة:' : 'The Result:'}</span>
-                    {project.result}
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mt-auto">
-                  <div className="flex gap-4">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold hover:text-primary transition-colors">
-                      <ExternalLink className="w-4 h-4" />
-                      {t.projects.preview}
+                
+                <div className="flex justify-between items-center pt-6 border-t border-border">
+                  <div className="flex gap-6">
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-foreground/40 hover:text-primary transition-colors" title={t.projects.preview}>
+                      <ExternalLink className="w-5 h-5" />
                     </a>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold hover:text-primary transition-colors">
-                      <Github className="w-4 h-4" />
-                      {t.projects.code}
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-foreground/40 hover:text-primary transition-colors" title={t.projects.code}>
+                      <Github className="w-5 h-5" />
                     </a>
                   </div>
-                  <Link href={`/projects/${project.id}`} className="text-primary font-bold text-sm flex items-center gap-1 group/more">
+                  <Link href={`/projects/${project.id}`} className="text-primary font-black uppercase tracking-widest text-xs flex items-center gap-2 group/more">
                     {lang === 'ar' ? 'التفاصيل' : 'Details'}
-                    {lang === 'ar' ? <ArrowLeft className="w-4 h-4 group-hover/more:-translate-x-1 transition-transform" /> : <ArrowRight className="w-4 h-4 group-hover/more:translate-x-1 transition-transform" />}
+                    <ArrowRight className={`w-4 h-4 group-hover/more:translate-x-2 transition-transform ${lang === 'ar' ? 'rotate-180' : ''}`} />
                   </Link>
                 </div>
               </div>
