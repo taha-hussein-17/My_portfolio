@@ -7,13 +7,6 @@ export async function POST(request: Request) {
     // The user's target email
     const targetEmail = "capootaha17@gmail.com";
 
-    // In a production environment, you should use a service like Resend.
-    // To enable real emails, follow these steps:
-    // 1. Sign up at https://resend.com (it's free for personal use)
-    // 2. Get your API key and add it to your .env.local as RESEND_API_KEY
-    // 3. Uncomment the code below:
-
-    /*
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -25,21 +18,29 @@ export async function POST(request: Request) {
         to: [targetEmail],
         subject: `New Message: ${subject}`,
         html: `
-          <h3>New Contact Form Submission</h3>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message}</p>
+          <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+            <h2 style="color: #3b82f6;">New Contact Form Submission</h2>
+            <hr style="border: 0; border-top: 1px solid #eee;" />
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Subject:</strong> ${subject}</p>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 20px;">
+              <p><strong>Message:</strong></p>
+              <p style="white-space: pre-wrap;">${message}</p>
+            </div>
+            <p style="font-size: 12px; color: #999; margin-top: 30px;">Sent from Taha Portfolio</p>
+          </div>
         `,
       }),
     });
-    */
 
-    console.log(`Email would be sent to ${targetEmail}:`, { name, email, subject, message });
+    if (!res.ok) {
+      const errorData = await res.json();
+      console.error('Resend API Error:', errorData);
+      throw new Error('Failed to send email via Resend');
+    }
 
-    // Note: If you want real emails to be sent, you must set RESEND_API_KEY in your .env.local
-    // and uncomment the Resend code. For now, we return success so the user sees a positive result.
+    console.log(`Email successfully sent to ${targetEmail}`);
 
     return NextResponse.json(
       { message: 'Message sent successfully!' },

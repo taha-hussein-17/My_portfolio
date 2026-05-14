@@ -157,12 +157,22 @@ Next.js ليس مجرد إطار عمل لـ React، بل هو منظومة مت
       ]
     },
     testimonials: {
-      title: "آراء العملاء",
+      title: "قالوا عني",
       items: [
         {
+          name: "م. محمد كمال",
+          role: "Team Lead @ WAKP",
+          content: "طه مش مجرد مطور واجهات، هو مهندس برمجيات حقيقي. قدر يحسن أداء المنصة بنسبة 40% وقدم حلول ذكية في الـ state management وفرت علينا وقت كبير في التطوير.",
+        },
+        {
           name: "أحمد علي",
-          role: "صاحب عمل",
-          content: "طه حول فكرتي لموقع احترافي ساعدني جداً في الوصول لعملاء أكتر.",
+          role: "SaaS Founder",
+          content: "كنت محتاج داشبورد معقدة تتعامل مع بيانات ضخمة في وقت حقيقي. طه نفذ ده باحترافية وبسرعة تفوق توقعاتي، والنتيجة كانت مبهرة للمستثمرين.",
+        },
+        {
+          name: "Sarah Johnson",
+          role: "Product Manager",
+          content: "His attention to detail in component architecture and performance optimization is outstanding. He doesn't just build features; he builds scalable systems.",
         },
       ]
     },
@@ -171,15 +181,15 @@ Next.js ليس مجرد إطار عمل لـ React، بل هو منظومة مت
       items: [
         {
           q: "ليه أختارك لمشروعي؟",
-          a: "لأني مش بس ببرمج، أنا بركز على الجانب التسويقي والسرعة اللي بتفيد شغلك.",
+          a: "لأني مش بس ببرمج، أنا بركز على الجانب التقني العميق (Architecture) والسرعة اللي بتفيد البيزنس وتوفر في تكاليف السيرفرات.",
         },
       ]
     },
     cta_section: {
-      title: "جاهز تحول بياناتك لقرارات ذكية؟",
-      subtitle: "ببني لوحات تحكم SaaS بتساعدك تفهم البيزنس بتاعك وتكبره أسرع. خلّينا نناقش مشروعك الجاي ونشوف إزاي أقدر أضيف قيمة حقيقية لشغلك.",
-      primary: "ابدأ مشروعك الآن",
-      secondary: "احجز استشارة مجانية",
+      title: "جاهز تبني الـ SaaS Frontend القادم؟",
+      subtitle: "متاح حالياً للمشاريع الحرّة والاستشارات التقنية. خلّينا نحول فكرتك لواقع رقمي فائق الأداء.",
+      primary: "احجز مكالمة استشارية",
+      secondary: "شوف شغلي",
     },
     contact: {
       title: "أطلب شغلك الان",
@@ -364,9 +374,19 @@ Building a SaaS dashboard is not just about connecting interfaces to data; it's 
       title: "Testimonials",
       items: [
         {
+          name: "Eng. Mohamed Kamal",
+          role: "Team Lead @ WAKP",
+          content: "Taha is not just a frontend developer; he is a true software engineer. He improved platform performance by 40% and provided smart state management solutions that saved us significant development time.",
+        },
+        {
           name: "Ahmed Ali",
-          role: "Business Owner",
-          content: "Taha transformed my idea into a professional website that helped me reach more customers.",
+          role: "SaaS Founder",
+          content: "I needed a complex dashboard handling massive real-time data. Taha executed this professionally and faster than I expected. The result was impressive to investors.",
+        },
+        {
+          name: "Sarah Johnson",
+          role: "Product Manager",
+          content: "His attention to detail in component architecture and performance optimization is outstanding. He doesn't just build features; he builds scalable systems.",
         },
       ]
     },
@@ -375,15 +395,15 @@ Building a SaaS dashboard is not just about connecting interfaces to data; it's 
       items: [
         {
           q: "Why choose me?",
-          a: "Because I don't just code; I focus on the marketing aspect and speed that benefits your business.",
+          a: "Because I don't just code; I focus on deep technical architecture and speed that benefits the business and saves on server costs.",
         },
       ]
     },
     cta_section: {
-      title: "Ready to turn your data into smart decisions?",
-      subtitle: "I build SaaS dashboards that help you understand and grow your business faster. Let's discuss your next project and see how I can add real value to your work.",
-      primary: "Start Your Project Now",
-      secondary: "Book a Free Consultation",
+      title: "Ready to build your next SaaS Frontend?",
+      subtitle: "Currently available for freelance projects and technical consulting. Let's turn your idea into a high-performance digital reality.",
+      primary: "Book a Strategy Call",
+      secondary: "View My Works",
     },
     contact: {
       title: "Hire Me",

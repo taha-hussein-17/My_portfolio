@@ -36,12 +36,13 @@ export default function Home() {
         </div>
 
         {/* Left Side: Social Icons */}
-        <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-20 hidden sm:flex">
+        <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-20 hidden sm:flex text-white">
           {[
-            { icon: <Facebook className="w-5 h-5" />, href: "#" },
+            { icon: <Facebook className="w-5 h-5" />, href: "https://www.facebook.com/taha.hussein.el.shrief" },
             { icon: <Twitter className="w-5 h-5" />, href: "#" },
             { icon: <Instagram className="w-5 h-5" />, href: "#" },
-            { icon: <Linkedin className="w-5 h-5" />, href: "#" },
+            { icon: <Github className="w-5 h-5" />, href: "https://github.com/taha-hussein-17" },
+            { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/taha0hussein0/" },
           ].map((social, i) => (
             <motion.a
               key={i}
@@ -120,8 +121,8 @@ export default function Home() {
                 className={lang === "ar" ? "lg:text-right" : ""}
               >
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-4 uppercase">
-                  <span className="block text-foreground">{lang === 'ar' ? 'مطور' : 'Creative'}</span>
-                  <span className="block gradient-text">{lang === 'ar' ? 'مبدع' : 'Developer'}</span>
+                  <span className="block lg:inline-block me-4 text-foreground">{lang === 'ar' ? 'مطور' : 'Creative'}</span>
+                  <span className="block lg:inline-block gradient-text">{lang === 'ar' ? 'مبدع' : 'Developer'}</span>
                 </h1>
                 
                 <motion.p
@@ -364,36 +365,35 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative"
+                className="group relative cursor-pointer"
               >
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-background border border-border">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  {/* Overlay Info */}
-                  <div className="absolute inset-0 p-10 flex flex-col justify-end translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="flex gap-2 mb-4">
-                      {project.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-primary text-white rounded-full">
-                          {tag}
-                        </span>
-                      ))}
+                <Link href={`/projects/${project.id}`}>
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-background border border-border">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 group-active:grayscale-0 group-active:scale-105 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Overlay Info */}
+                    <div className="absolute inset-0 p-10 flex flex-col justify-end translate-y-10 group-hover:translate-y-0 group-active:translate-y-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-500">
+                      <div className="flex gap-2 mb-4">
+                        {project.tags.slice(0, 3).map(tag => (
+                          <span key={tag} className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-primary text-white rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter text-white">{project.title}</h3>
+                      <div className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary hover:text-white transition-colors">
+                        {lang === 'ar' ? 'تفاصيل المشروع' : 'View Project'}
+                        <ArrowRight className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter text-white">{project.title}</h3>
-                    <Link 
-                      href={`/projects`}
-                      className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary hover:text-white transition-colors"
-                    >
-                      {lang === 'ar' ? 'تفاصيل المشروع' : 'View Project'}
-                      <ArrowRight className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} />
-                    </Link>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -522,94 +522,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        {/* Background Decorative Elements */}
-        <div className="absolute top-0 left-0 w-full h-full -z-10">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
+      {/* CTA Section - Brand Refined */}
+      <section className="py-32 relative overflow-hidden bg-foreground text-background">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
         </div>
-
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative bg-card border border-border/50 rounded-[3rem] p-12 md:p-24 text-center shadow-2xl overflow-hidden group"
+            className="max-w-4xl mx-auto"
           >
-            {/* Animated background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
-            
-            <div className="relative z-10 max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-8"
+            <h2 className="text-4xl md:text-7xl font-black mb-8 uppercase tracking-tighter leading-tight">
+              {t.cta_section.title}
+            </h2>
+            <p className="text-background/60 text-xl md:text-2xl mb-12 font-medium leading-relaxed max-w-2xl mx-auto">
+              {t.cta_section.subtitle}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link
+                href="/contact"
+                className="bg-primary text-white px-12 py-5 rounded-none font-black uppercase tracking-widest text-sm hover:bg-white hover:text-primary transition-all shadow-2xl hover:-translate-y-1"
               >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                {lang === "ar" ? "متاح لمشاريع جديدة" : "Available for new projects"}
-              </motion.div>
-
-              <h2 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
-                {t.cta_section.title}
-              </h2>
-              
-              <p className="text-xl md:text-2xl text-secondary mb-12 leading-relaxed">
-                {t.cta_section.subtitle}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative group/btn w-full sm:w-auto"
-                >
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-40 group-hover/btn:opacity-100 transition duration-500" />
-                  <Link
-                    href="/contact"
-                    className="relative bg-primary text-white px-10 py-5 rounded-full text-xl font-bold flex items-center justify-center gap-3 transition-all hover:bg-primary/90"
-                  >
-                    {t.cta_section.primary}
-                    {lang === "ar" ? <ArrowLeft className="w-6 h-6" /> : <ArrowRight className="w-6 h-6" />}
-                  </Link>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto"
-                >
-                  <Link
-                    href="https://wa.me/201122889897"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-card hover:bg-secondary/10 border-2 border-border text-foreground px-10 py-5 rounded-full text-xl font-bold flex items-center justify-center gap-3 transition-all"
-                  >
-                    <Rocket className="w-6 h-6 text-accent" />
-                    {t.cta_section.secondary}
-                  </Link>
-                </motion.div>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="mt-16 pt-12 border-t border-border/50 grid grid-cols-2 md:grid-cols-4 gap-8">
-                {[
-                  { label: lang === "ar" ? "خبرة" : "Experience", value: "+4 Years" },
-                  { label: lang === "ar" ? "مشروع" : "Projects", value: "+50" },
-                  { label: lang === "ar" ? "رضا العملاء" : "Satisfaction", value: "100%" },
-                  { label: lang === "ar" ? "دعم" : "Support", value: "24/7" },
-                ].map((item, i) => (
-                  <div key={i} className="text-center">
-                    <div className="text-2xl font-bold text-foreground">{item.value}</div>
-                    <div className="text-sm text-secondary font-medium">{item.label}</div>
-                  </div>
-                ))}
-              </div>
+                {t.cta_section.primary}
+              </Link>
+              <Link
+                href="/projects"
+                className="border-2 border-white/20 text-white px-12 py-5 rounded-none font-black uppercase tracking-widest text-sm hover:bg-white hover:text-foreground transition-all"
+              >
+                {t.cta_section.secondary}
+              </Link>
             </div>
           </motion.div>
         </div>

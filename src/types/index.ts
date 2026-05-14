@@ -43,6 +43,9 @@ export interface ProjectItem {
   performance?: string;
   technique?: string;
   screenshots?: string[];
+  metrics?: { label: string; value: string }[];
+  architecture_decisions?: { title: string; desc: string }[];
+  before_after?: { label: string; before: string; after: string; type: 'image' | 'text' }[];
 }
 
 export interface SkillItem {

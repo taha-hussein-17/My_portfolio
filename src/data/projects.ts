@@ -7,6 +7,9 @@ export interface ProjectData {
   demo: string;
   image: string;
   screenshots?: string[];
+  metrics?: { label: string; value: string }[];
+  architecture_decisions?: { title: string; desc: string }[];
+  before_after?: { label: string; before: string; after: string; type: 'image' | 'text' }[];
   ar: {
     title: string;
     desc: string;
@@ -44,6 +47,21 @@ export const projectsData: ProjectData[] = [
       "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1531403001835-46147d1766a4?q=80&w=1000&auto=format&fit=crop"
     ],
+    metrics: [
+      { label: "Concurrent Users", value: "50,000+" },
+      { label: "Initial Load Reduction", value: "40%" },
+      { label: "Lighthouse Score", value: "98/100" },
+      { label: "SEO Visibility", value: "+60%" }
+    ],
+    architecture_decisions: [
+      { title: "Next.js App Router", desc: "Used for better routing and built-in optimization like streaming and server components." },
+      { title: "ISR (Incremental Static Regeneration)", desc: "To serve static content while keeping it updated without rebuilding the entire site." },
+      { title: "Tailwind CSS", desc: "For a highly maintainable and scalable design system with zero runtime CSS." }
+    ],
+    before_after: [
+      { label: "Lighthouse Performance", before: "65", after: "98", type: "text" },
+      { label: "Initial Bundle Size", before: "250kb", after: "85kb", type: "text" }
+    ],
     ar: {
       title: "WAKP Academy Website",
       desc: "Built a high-conversion educational platform serving 50,000+ students with optimized rendering and global scalability.",
@@ -78,6 +96,21 @@ export const projectsData: ProjectData[] = [
     screenshots: [
       "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+    ],
+    metrics: [
+      { label: "Data Points/sec", value: "1,000+" },
+      { label: "State Sync", value: "Real-time" },
+      { label: "Table Rendering", value: "Virtualized" },
+      { label: "Efficiency Gain", value: "40%" }
+    ],
+    architecture_decisions: [
+      { title: "TanStack Query", desc: "Implemented for powerful server-state management, caching, and optimistic updates." },
+      { title: "Firebase Real-time", desc: "Used for instant data synchronization across all connected clients." },
+      { title: "Modular Store", desc: "Designed a modular state management system to handle complex business logic without performance hits." }
+    ],
+    before_after: [
+      { label: "Data Latency", before: "2.5s", after: "150ms", type: "text" },
+      { label: "Table FPS", before: "15-20", after: "60", type: "text" }
     ],
     ar: {
       title: "WAKP Real-time SaaS Dashboard",
@@ -164,6 +197,9 @@ export const getProjects = (lang: 'ar' | 'en'): ProjectItem[] => {
     demo: p.demo,
     image: p.image,
     screenshots: p.screenshots,
+    metrics: p.metrics,
+    architecture_decisions: p.architecture_decisions,
+    before_after: p.before_after,
     ...p[lang]
   }));
 };

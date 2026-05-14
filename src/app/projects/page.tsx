@@ -139,51 +139,51 @@ export default function ProjectsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-card rounded-[2.5rem] overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-2xl"
+              className="group bg-card rounded-[2.5rem] overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-2xl cursor-pointer active:border-primary/50"
             >
-              <div className="aspect-video relative overflow-hidden">
-                <Image 
-                  src={project.image} 
-                  alt={project.title} 
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-              
-              <div className="p-8">
-                <div className="flex gap-2 mb-6 flex-wrap">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-[10px] font-black uppercase tracking-widest px-3 py-1 bg-primary/10 text-primary rounded-full">
-                      {tag}
-                    </span>
-                  ))}
+              <Link href={`/projects/${project.id}`}>
+                <div className="aspect-video relative overflow-hidden">
+                  <Image 
+                    src={project.image} 
+                    alt={project.title} 
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 group-active:grayscale-0 group-active:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500" />
                 </div>
-                <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter group-hover:text-primary transition-colors">
-                  <Link href={`/projects/${project.id}`}>
-                    {project.title}
-                  </Link>
-                </h3>
-                <p className="text-secondary mb-8 text-sm leading-relaxed font-medium line-clamp-2">
-                  {project.desc}
-                </p>
                 
-                <div className="flex justify-between items-center pt-6 border-t border-border">
-                  <div className="flex gap-6">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-foreground/40 hover:text-primary transition-colors" title={t.projects.preview}>
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-foreground/40 hover:text-primary transition-colors" title={t.projects.code}>
-                      <Github className="w-5 h-5" />
-                    </a>
+                <div className="p-8">
+                  <div className="flex gap-2 mb-6 flex-wrap">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="text-[10px] font-black uppercase tracking-widest px-3 py-1 bg-primary/10 text-primary rounded-full">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                  <Link href={`/projects/${project.id}`} className="text-primary font-black uppercase tracking-widest text-xs flex items-center gap-2 group/more">
-                    {lang === 'ar' ? 'التفاصيل' : 'Details'}
-                    <ArrowRight className={`w-4 h-4 group-hover/more:translate-x-2 transition-transform ${lang === 'ar' ? 'rotate-180' : ''}`} />
-                  </Link>
+                  <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter group-hover:text-primary group-active:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-secondary mb-8 text-sm leading-relaxed font-medium line-clamp-2">
+                    {project.desc}
+                  </p>
+                  
+                  <div className="flex justify-between items-center pt-6 border-t border-border">
+                    <div className="flex gap-6">
+                      <div className="text-foreground/40 hover:text-primary transition-colors" title={t.projects.preview}>
+                        <ExternalLink className="w-5 h-5" />
+                      </div>
+                      <div className="text-foreground/40 hover:text-primary transition-colors" title={t.projects.code}>
+                        <Github className="w-5 h-5" />
+                      </div>
+                    </div>
+                    <div className="text-primary font-black uppercase tracking-widest text-xs flex items-center gap-2 group/more">
+                      {lang === 'ar' ? 'التفاصيل' : 'Details'}
+                      <ArrowRight className={`w-4 h-4 group-hover/more:translate-x-2 transition-transform ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
