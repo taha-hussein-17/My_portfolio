@@ -6,16 +6,27 @@ import { ArrowLeft, ArrowRight, ExternalLink, Github, CheckCircle2, Layout, Shie
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import PrivateCodeModal from "@/components/PrivateCodeModal";
 
 export default function ProjectDetails() {
   const { t, lang } = useLanguage();
   const { id } = useParams();
   const router = useRouter();
+  const [isPrivateModalOpen, setIsPrivateModalOpen] = useState(false);
 
   const project = useMemo(() => {
     return t.projects.items.find((p) => p.id === id);
   }, [t.projects.items, id]);
+
+  const handleCodeClick = (e: React.MouseEvent) => {
+    if (!project) return;
+    const isGithub = project.link.includes("github.com");
+    if (!isGithub) {
+      e.preventDefault();
+      setIsPrivateModalOpen(true);
+    }
+  };
 
   if (!project) {
     return (
@@ -115,12 +126,20 @@ export default function ProjectDetails() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleCodeClick}
                 className="bg-card text-foreground border border-border px-8 py-4 rounded-2xl font-bold flex items-center gap-2 hover:bg-secondary/10 transition-all"
               >
                 <Github className="w-5 h-5" />
                 {t.projects.code}
               </a>
             </div>
+
+            {/* Private Code Modal */}
+            <PrivateCodeModal 
+              isOpen={isPrivateModalOpen} 
+              onClose={() => setIsPrivateModalOpen(false)} 
+              demoLink={project.demo} 
+            />
 
             {/* Metrics Section */}
             {project.metrics && (

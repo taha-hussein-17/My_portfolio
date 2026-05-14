@@ -40,7 +40,7 @@ export const projectsData: ProjectData[] = [
   {
     id: "wakp-academy",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion", "SEO"],
-    link: "https://github.com/anzma-mosta/nms-Frontend",
+    link: "https://nms-frontend-rho.vercel.app/",
     demo: "https://nms-frontend-rho.vercel.app/",
     image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop",
     screenshots: [
@@ -90,7 +90,7 @@ export const projectsData: ProjectData[] = [
   {
     id: "wakp-dashboard",
     tags: ["React 18", "Firebase", "TanStack Query", "SaaS"],
-    link: "https://github.com/anzma-mosta/nms-Frontend",
+    link: "https://app.wakp.net/login",
     demo: "https://app.wakp.net/login",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
     screenshots: [

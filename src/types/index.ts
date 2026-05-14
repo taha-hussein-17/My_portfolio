@@ -115,6 +115,10 @@ export interface TranslationContent {
     preview: string;
     code: string;
     items: ProjectItem[];
+    private_code_title: string;
+    private_code_message: string;
+    visit_live: string;
+    stay_here: string;
   };
   blog: {
     title: string;

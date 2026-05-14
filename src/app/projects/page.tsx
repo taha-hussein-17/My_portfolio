@@ -8,12 +8,25 @@ import { ProjectItem } from "@/types";
 import { useMemo, useState } from "react";
 import Script from "next/script";
 import Link from "next/link";
+import PrivateCodeModal from "@/components/PrivateCodeModal";
 
 export default function ProjectsPage() {
   const { t, lang } = useLanguage();
   const [query, setQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sort, setSort] = useState<"alpha" | "tags">("alpha");
+  const [isPrivateModalOpen, setIsPrivateModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+
+  const handleCodeClick = (project: ProjectItem) => {
+    const isGithub = project.link.includes("github.com");
+    if (!isGithub) {
+      setSelectedProject(project);
+      setIsPrivateModalOpen(true);
+    } else {
+      window.open(project.link, "_blank");
+    }
+  };
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
@@ -170,12 +183,27 @@ export default function ProjectsPage() {
                   
                   <div className="flex justify-between items-center pt-6 border-t border-border">
                     <div className="flex gap-6">
-                      <div className="text-foreground/40 hover:text-primary transition-colors" title={t.projects.preview}>
+                      <a 
+                        href={project.demo} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-foreground/40 hover:text-primary transition-colors" 
+                        title={t.projects.preview}
+                      >
                         <ExternalLink className="w-5 h-5" />
-                      </div>
-                      <div className="text-foreground/40 hover:text-primary transition-colors" title={t.projects.code}>
+                      </a>
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          handleCodeClick(project);
+                        }}
+                        className="text-foreground/40 hover:text-primary transition-colors" 
+                        title={t.projects.code}
+                      >
                         <Github className="w-5 h-5" />
-                      </div>
+                      </button>
                     </div>
                     <div className="text-primary font-black uppercase tracking-widest text-xs flex items-center gap-2 group/more">
                       {lang === 'ar' ? 'التفاصيل' : 'Details'}
@@ -187,6 +215,15 @@ export default function ProjectsPage() {
             </motion.div>
           ))}
         </div>
+
+        {/* Private Code Modal */}
+        {selectedProject && (
+          <PrivateCodeModal 
+            isOpen={isPrivateModalOpen} 
+            onClose={() => setIsPrivateModalOpen(false)} 
+            demoLink={selectedProject.demo} 
+          />
+        )}
       </div>
     </div>
   );
