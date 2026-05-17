@@ -39,9 +39,9 @@ export interface ProjectData {
 export const projectsData: ProjectData[] = [
   {
     id: "wakp-academy",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "SEO"],
-    link: "https://nms-frontend-rho.vercel.app/",
-    demo: "https://nms-frontend-rho.vercel.app/",
+    tags: ["React", "Tailwind CSS", "Framer Motion", "SEO", "performance optimization"],
+    link: "https://website.wakp.net/",
+    demo: "https://website.wakp.net/",
     image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop",
     screenshots: [
       "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop",
@@ -54,7 +54,7 @@ export const projectsData: ProjectData[] = [
       { label: "SEO Visibility", value: "+60%" }
     ],
     architecture_decisions: [
-      { title: "Next.js App Router", desc: "Used for better routing and built-in optimization like streaming and server components." },
+      { title: "React Router", desc: "Used for better routing and built-in optimization like streaming and server components." },
       { title: "ISR (Incremental Static Regeneration)", desc: "To serve static content while keeping it updated without rebuilding the entire site." },
       { title: "Tailwind CSS", desc: "For a highly maintainable and scalable design system with zero runtime CSS." }
     ],
@@ -67,7 +67,7 @@ export const projectsData: ProjectData[] = [
       desc: "Built a high-conversion educational platform serving 50,000+ students with optimized rendering and global scalability.",
       problem: "بطء التحميل وضعف أداء الـ SEO مما أثر على وصول الطلاب للمحتوى التعليمي وتجربة المستخدم.",
       solution: "استخدام Next.js مع Server-side Rendering (SSR) وتحسين الصور لضمان أسرع وقت تحميل ممكن.",
-      technique: "Next.js SSR & ISR, Image Optimization, Edge Middleware for global performance.",
+      technique: "React Router for client-side routing, Next.js SSR & ISR, Image Optimization, Edge Middleware for global performance.",
       result: "تحقيق تقييم 4.9/5 من الطلاب وزيادة بنسبة 30% في التسجيل في الكورسات مع Lighthouse score 95+.",
       architecture: "SSR/ISR based architecture for dynamic and fast content delivery, utilizing a unified Design System.",
       performance: "95+ Lighthouse score with optimized Core Web Vitals and lightning-fast response times.",
@@ -78,8 +78,8 @@ export const projectsData: ProjectData[] = [
       title: "WAKP Academy Website",
       desc: "Built a high-conversion educational platform serving 50,000+ students with optimized rendering and global scalability.",
       problem: "Slow load times and poor SEO visibility which hindered student access to educational content and user experience.",
-      solution: "Implemented Next.js with Server-side Rendering (SSR) and image optimization for the fastest possible load times.",
-      technique: "Next.js SSR & ISR, Image Optimization, Edge Middleware for global performance.",
+      solution: "Implemented React Router for better routing and Next.js with Server-side Rendering (SSR) and image optimization for the fastest possible load times.",
+      technique: "React Router for client-side routing, Next.js SSR & ISR, Image Optimization, Edge Middleware for global performance.",
       result: "Achieved a 4.9/5 student rating and a 30% increase in course enrollments with a Lighthouse score of 95+.",
       architecture: "SSR/ISR based architecture for dynamic and fast content delivery, utilizing a unified Design System.",
       performance: "95+ Lighthouse score with optimized Core Web Vitals and lightning-fast response times.",
