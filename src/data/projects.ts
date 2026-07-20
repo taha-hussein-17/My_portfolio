@@ -1,12 +1,15 @@
 import { ProjectItem } from "@/types";
-
+import img1 from "@/assets/images/kaily-p/Screenshot 2026-07-20 143604.png";
+import img2 from "@/assets/images/kaily-p//Screenshot 2026-07-20 143723.png";
 export interface ProjectData {
   id: string;
   tags: string[];
   link: string;
   demo: string;
-  image: string;
-  screenshots?: string[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  image: string | any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  screenshots?: string[] | any[];
   metrics?: { label: string; value: string }[];
   architecture_decisions?: { title: string; desc: string }[];
   before_after?: { label: string; before: string; after: string; type: 'image' | 'text' }[];
@@ -37,6 +40,114 @@ export interface ProjectData {
 }
 
 export const projectsData: ProjectData[] = [
+  {
+  id: "kaily-p",
+  tags: [
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "TypeScript",
+    "REST API",
+    "Performance Optimization"
+  ],
+  link: "https://kaily-p.com/home",
+  demo: "https://kaily-p.com/home",
+  image: img1,
+  screenshots: [img2, img1],
+
+  metrics: [
+    { label: "Responsive", value: "100%" },
+    { label: "Pages", value: "20+" },
+    { label: "Performance", value: "95+" },
+    { label: "SEO Score", value: "90+" }
+  ],
+
+  architecture_decisions: [
+    {
+      title: "Next.js App Router",
+      desc: "Used for scalable routing, server rendering, and improved performance."
+    },
+    {
+      title: "Component-Based Architecture",
+      desc: "Built reusable UI components to simplify maintenance and feature development."
+    },
+    {
+      title: "API Integration",
+      desc: "Integrated backend APIs for products, authentication, orders, and dynamic content."
+    }
+  ],
+
+  before_after: [
+    {
+      label: "Lighthouse Performance",
+      before: "72",
+      after: "95",
+      type: "text"
+    },
+    {
+      label: "First Load JS",
+      before: "320 KB",
+      after: "145 KB",
+      type: "text"
+    }
+  ],
+
+  ar: {
+    title: "Kaily-P E-commerce Platform",
+    desc: "منصة تجارة إلكترونية حديثة توفر تجربة تسوق سريعة وسلسة مع أداء عالٍ وتصميم متجاوب.",
+    problem:
+      "كان التحدي هو بناء متجر إلكتروني سريع وقابل للتوسع مع الحفاظ على تجربة مستخدم ممتازة على جميع الأجهزة.",
+    solution:
+      "تم تطوير المشروع باستخدام Next.js وReact مع تحسين الأداء، وتقسيم المكونات، وتحسين تحميل الصور والبيانات.",
+    technique:
+      "Next.js App Router، Server Components، Tailwind CSS، TypeScript، Dynamic API Integration، Image Optimization.",
+    result:
+      "تحسين سرعة تحميل الصفحات، وتجربة مستخدم أكثر سلاسة، مع أداء مرتفع وتوافق كامل مع الهواتف والأجهزة المختلفة.",
+    architecture:
+      "معمارية تعتمد على مكونات قابلة لإعادة الاستخدام مع فصل واضح بين واجهة المستخدم وطبقة البيانات.",
+    performance:
+      "تحسين Core Web Vitals وتقليل حجم الملفات وتحميل المحتوى بشكل ديناميكي لتحقيق تجربة استخدام أسرع.",
+    full_desc:
+      "منصة تجارة إلكترونية متكاملة تضم صفحات المنتجات، التصنيفات، البحث، العروض، وسلة التسوق مع واجهة حديثة وسهلة الاستخدام.",
+    features: [
+      "Responsive Design",
+      "Dynamic Product Catalog",
+      "Authentication",
+      "Shopping Cart",
+      "Wishlist",
+      "Performance Optimization",
+      "SEO Friendly"
+    ]
+  },
+
+  en: {
+    title: "Kaily-P E-commerce Platform",
+    desc: "A modern e-commerce platform delivering a fast, scalable, and responsive shopping experience.",
+    problem:
+      "The challenge was to build a scalable online store with excellent performance while maintaining a seamless user experience across all devices.",
+    solution:
+      "Developed the application using Next.js and React with optimized rendering, reusable components, image optimization, and efficient API integration.",
+    technique:
+      "Next.js App Router, Server Components, Tailwind CSS, TypeScript, Dynamic API Integration, and Image Optimization.",
+    result:
+      "Delivered faster page loads, improved responsiveness, and a highly optimized shopping experience across desktop and mobile devices.",
+    architecture:
+      "A modular component-based architecture with reusable UI elements and clean separation between presentation and data layers.",
+    performance:
+      "Optimized Core Web Vitals, reduced bundle size, and improved loading performance through modern rendering techniques.",
+    full_desc:
+      "A full-featured e-commerce platform including product browsing, categories, search, promotions, shopping cart, authentication, and a responsive user interface.",
+    features: [
+      "Responsive Design",
+      "Product Catalog",
+      "Authentication",
+      "Shopping Cart",
+      "Wishlist",
+      "SEO Optimization",
+      "Performance Optimization"
+    ]
+  }
+},
   {
     id: "wakp-academy",
     tags: ["React", "Tailwind CSS", "Framer Motion", "SEO", "performance optimization"],
